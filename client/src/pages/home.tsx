@@ -5,7 +5,7 @@ import { z } from "zod";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Components
 import { Logo } from "@/components/logo";
@@ -294,11 +294,21 @@ const FAQItem = ({ question, answer }: FAQItemProps) => {
           className={`h-6 w-6 text-primary transition-transform ${isOpen ? "transform rotate-180" : ""}`}
         />
       </button>
-      {isOpen && (
-        <div className="px-6 pb-4">
-          <p className="text-gray-700">{answer}</p>
-        </div>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <div className="px-6 pb-4">
+              <p className="text-gray-700">{answer}</p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
@@ -1134,12 +1144,9 @@ export default function Home() {
                 </li>
                 <li className="flex items-start">
                   <Phone className="h-5 w-5 text-primary mr-2 mt-0.5" />
-                  <span className="text-gray-300">(11) 98765-4321</span>
+                  <span className="text-gray-300">(51) 91088-005</span>
                 </li>
-                <li className="flex items-start">
-                  <MapPin className="h-5 w-5 text-primary mr-2 mt-0.5" />
-                  <span className="text-gray-300">Av. Paulista, 1000 - São Paulo/SP</span>
-                </li>
+
               </ul>
             </div>
             
@@ -1181,7 +1188,7 @@ export default function Home() {
 
       {/* WhatsApp Button */}
       <motion.a
-        href="https://wa.me/5511987654321"
+        href="https://wa.me/555191088005"
         className="fixed bottom-8 right-8 bg-green-500 hover:bg-green-600 w-14 h-14 rounded-full flex items-center justify-center shadow-lg z-50"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}

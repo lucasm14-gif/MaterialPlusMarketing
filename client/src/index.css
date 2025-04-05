@@ -48,7 +48,7 @@
 }
 
 .carousel-item:hover {
-  transform: scale(1.03);
+  /* Removida a animação de expansão no hover */
   background-color: rgba(30, 101, 222, 0.02);
 }
 
