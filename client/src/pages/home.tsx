@@ -374,12 +374,12 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-24 pb-16 md:pt-28 md:pb-20 bg-primary bg-opacity-5">
+      <section className="pt-24 pb-16 md:pt-28 md:pb-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 md:pr-6 mb-8 md:mb-0">
               <h1 className="font-montserrat font-extrabold text-3xl md:text-4xl lg:text-5xl text-[#0C0910] leading-tight mb-4">
-                <span className="text-primary">Venda mais</span> e transforme sua loja de materiais de construção
+                <span className="text-primary bg-yellow-100 px-1">Venda mais</span> e transforme sua loja de materiais de construção
               </h1>
               <h2 className="font-montserrat font-bold text-xl md:text-2xl text-[#0C0910] opacity-80 mb-6">
                 Marketing digital especializado para quem vende materiais de construção, elétricos e hidráulicos
@@ -396,7 +396,7 @@ export default function Home() {
                 Quero vender mais na minha loja
               </Button>
             </div>
-            <div className="md:w-1/2 bg-white p-6 rounded-lg shadow-md">
+            <div className="md:w-1/2 bg-[#F6F8FF] p-6 rounded-lg shadow-md border border-gray-100">
               <h3 className="font-montserrat font-bold text-xl text-primary mb-4">Aumente suas vendas agora</h3>
               <p className="mb-4">Preencha o formulário abaixo para receber uma análise gratuita da sua loja:</p>
               
@@ -652,6 +652,142 @@ export default function Home() {
           >
             Quero aumentar minhas vendas
           </Button>
+        </div>
+      </Section>
+
+      {/* Industry Leaders Section */}
+      <Section bgColor="bg-[#F6F8FF]">
+        <SectionTitle
+          title="Inspirado nas melhores práticas do mercado"
+          subtitle="Veja o que líderes de grandes empresas do setor de materiais de construção dizem sobre a importância do marketing digital"
+        />
+        
+        <div className="mt-8">
+          <div className="flex overflow-x-auto pb-8 space-x-6">
+            {/* Testimonial Card 1 */}
+            <div className="flex-shrink-0 w-full md:w-[600px] bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="flex h-full">
+                <div className="w-2/5 bg-gray-200">
+                  <img 
+                    src="@assets/Component 8.png" 
+                    alt="Felipe Hanse" 
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="w-3/5 p-6 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-montserrat font-bold text-xl">Felipe Hanse</h3>
+                    <p className="text-gray-600 text-sm mb-4">Presidente do Conselho de Administração</p>
+                    <p className="text-gray-700">
+                      Presidente do Conselho de Administração do Grupo Tigre, impulsionou a inovação e expansão da empresa.
+                    </p>
+                  </div>
+                  <div className="mt-4">
+                    <img 
+                      src="@assets/Component 8.png" 
+                      alt="Tigre Logo" 
+                      className="h-10"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Testimonial Card 2 */}
+            <div className="flex-shrink-0 w-full md:w-[600px] bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="flex h-full">
+                <div className="w-2/5 bg-gray-200">
+                  <img 
+                    src="@assets/Component 11.png" 
+                    alt="Gustavo Werneck" 
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="w-3/5 p-6 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-montserrat font-bold text-xl">Gustavo Werneck</h3>
+                    <p className="text-gray-600 text-sm mb-4">CEO - Gerdau</p>
+                    <p className="text-gray-700">
+                      A Gerdau é uma das maiores produtoras de aço do mundo, com operações em várias partes do globo.
+                    </p>
+                  </div>
+                  <div className="mt-4">
+                    <img 
+                      src="@assets/Component 11.png" 
+                      alt="Gerdau Logo" 
+                      className="h-10"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Testimonial Card 3 */}
+            <div className="flex-shrink-0 w-full md:w-[600px] bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="flex h-full">
+                <div className="w-2/5 bg-gray-200">
+                  <img 
+                    src="@assets/Component 10.png" 
+                    alt="Maurício Harger" 
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="w-3/5 p-6 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-montserrat font-bold text-xl">Maurício Harger</h3>
+                    <p className="text-gray-600 text-sm mb-4">CEO - Grupo Baumgart</p>
+                    <p className="text-gray-700">
+                      Lidera a empresa com foco em inovação, sustentabilidade e expansão de mercado.
+                    </p>
+                  </div>
+                  <div className="mt-4">
+                    <img 
+                      src="@assets/Component 10.png" 
+                      alt="Vedacit Logo" 
+                      className="h-10"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Testimonial Card 4 */}
+            <div className="flex-shrink-0 w-full md:w-[600px] bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="flex h-full">
+                <div className="w-2/5 bg-gray-200">
+                  <img 
+                    src="@assets/Component 13.png" 
+                    alt="Marcelo Strufaldi Castelli" 
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="w-3/5 p-6 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-montserrat font-bold text-xl">Marcelo Strufaldi Castelli</h3>
+                    <p className="text-gray-600 text-sm mb-4">Presidente - Votorantim Cimentos</p>
+                    <p className="text-gray-700">
+                      Líder no setor de materiais de construção, especialmente na produção de cimento, concreto, agregados e argamassas.
+                    </p>
+                  </div>
+                  <div className="mt-4">
+                    <img 
+                      src="@assets/Component 13.png" 
+                      alt="Votorantim Logo" 
+                      className="h-10"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Indicator dots */}
+          <div className="flex justify-center space-x-2 mt-4">
+            <div className="w-2 h-2 rounded-full bg-primary"></div>
+            <div className="w-2 h-2 rounded-full bg-gray-300"></div>
+            <div className="w-2 h-2 rounded-full bg-gray-300"></div>
+            <div className="w-2 h-2 rounded-full bg-gray-300"></div>
+          </div>
         </div>
       </Section>
 
