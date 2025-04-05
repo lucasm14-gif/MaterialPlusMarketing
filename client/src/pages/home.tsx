@@ -560,7 +560,7 @@ export default function Home() {
                   
                   <Button 
                     type="submit" 
-                    className="w-full shadow-md font-semibold py-3 hover:text-primary-foreground"
+                    className="w-full shadow-md font-semibold py-3 text-white"
                     variant="default"
                     disabled={submitLeadMutation.isPending}
                   >
@@ -645,7 +645,7 @@ export default function Home() {
           <Button 
             onClick={() => scrollToSection("contato")}
             size="lg"
-            className="shadow-md"
+            className="shadow-md text-white"
           >
             Quero resolver esses problemas
           </Button>
@@ -710,7 +710,7 @@ export default function Home() {
                 variant="accent"
                 size="lg"
                 onClick={() => scrollToSection("contato")}
-                className="shadow-md"
+                className="shadow-md text-black"
               >
                 Quero conhecer mais
               </Button>
@@ -763,7 +763,7 @@ export default function Home() {
             variant="accent"
             size="lg"
             onClick={() => scrollToSection("contato")}
-            className="shadow-md"
+            className="shadow-md text-black" 
           >
             Quero aumentar minhas vendas
           </Button>
@@ -1027,7 +1027,7 @@ export default function Home() {
                   <Button 
                     type="submit" 
                     variant="accent"
-                    className="w-full shadow-md font-semibold py-3"
+                    className="w-full shadow-md font-semibold py-3 text-black"
                     disabled={submitLeadMutation.isPending}
                   >
                     {submitLeadMutation.isPending ? "ENVIANDO..." : "SOLICITAR ANÁLISE GRATUITA"}
