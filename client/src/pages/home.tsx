@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -29,6 +29,8 @@ import {
   ArrowUp,
   CheckCircle,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   DollarSign,
   Facebook,
   Instagram,
@@ -241,6 +243,8 @@ const FeatureItem = ({ text }: FeatureItemProps) => (
 export default function Home() {
   // States
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slideRef = React.useRef<HTMLDivElement>(null);
   const { toast } = useToast();
   
   // Lead Form (Hero)
@@ -314,6 +318,33 @@ export default function Home() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+  
+  // Carrossel navigation
+  const totalSlides = 6; // Total de casos/imagens no carrossel
+  
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
+  };
+  
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
+  };
+  
+  // Navegar para um slide específico através dos dots
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+  
+  // Efeito para mover o carrossel quando o currentSlide mudar
+  useEffect(() => {
+    if (slideRef.current) {
+      const slideElement = slideRef.current;
+      slideElement.scrollTo({
+        left: slideElement.clientWidth * currentSlide,
+        behavior: 'smooth'
+      });
+    }
+  }, [currentSlide]);
 
   return (
     <div className="min-h-screen bg-[#F6F8FF] font-inter text-[#0C0910]">
@@ -655,138 +686,101 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Industry Leaders Section */}
+      {/* Inspirado Section */}
       <Section bgColor="bg-[#F6F8FF]">
         <SectionTitle
           title="Inspirado nas melhores práticas do mercado"
-          subtitle="Veja o que líderes de grandes empresas do setor de materiais de construção dizem sobre a importância do marketing digital"
+          subtitle="Marketing digital exclusivo para lojas de materiais de construção e elétricos"
         />
         
-        <div className="mt-8">
-          <div className="flex overflow-x-auto pb-8 space-x-6">
-            {/* Testimonial Card 1 */}
-            <div className="flex-shrink-0 w-full md:w-[600px] bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="flex h-full">
-                <div className="w-2/5 bg-gray-200">
-                  <img 
-                    src="@assets/Component 8.png" 
-                    alt="Felipe Hanse" 
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="w-3/5 p-6 flex flex-col justify-between">
-                  <div>
-                    <h3 className="font-montserrat font-bold text-xl">Felipe Hanse</h3>
-                    <p className="text-gray-600 text-sm mb-4">Presidente do Conselho de Administração</p>
-                    <p className="text-gray-700">
-                      Presidente do Conselho de Administração do Grupo Tigre, impulsionou a inovação e expansão da empresa.
-                    </p>
-                  </div>
-                  <div className="mt-4">
-                    <img 
-                      src="@assets/Component 8.png" 
-                      alt="Tigre Logo" 
-                      className="h-10"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div className="mt-8 max-w-6xl mx-auto">
+          {/* Carrossel de imagens */}
+          <div className="relative overflow-hidden rounded-lg shadow-lg">
+            {/* Botões de navegação */}
+            <button 
+              onClick={prevSlide}
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow-md z-10 ml-2 transition"
+              aria-label="Anterior"
+            >
+              <ChevronLeft className="h-6 w-6 text-primary" />
+            </button>
             
-            {/* Testimonial Card 2 */}
-            <div className="flex-shrink-0 w-full md:w-[600px] bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="flex h-full">
-                <div className="w-2/5 bg-gray-200">
-                  <img 
-                    src="@assets/Component 11.png" 
-                    alt="Gustavo Werneck" 
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="w-3/5 p-6 flex flex-col justify-between">
-                  <div>
-                    <h3 className="font-montserrat font-bold text-xl">Gustavo Werneck</h3>
-                    <p className="text-gray-600 text-sm mb-4">CEO - Gerdau</p>
-                    <p className="text-gray-700">
-                      A Gerdau é uma das maiores produtoras de aço do mundo, com operações em várias partes do globo.
-                    </p>
-                  </div>
-                  <div className="mt-4">
-                    <img 
-                      src="@assets/Component 11.png" 
-                      alt="Gerdau Logo" 
-                      className="h-10"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+            <button 
+              onClick={nextSlide}
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow-md z-10 mr-2 transition"
+              aria-label="Próximo"
+            >
+              <ChevronRight className="h-6 w-6 text-primary" />
+            </button>
             
-            {/* Testimonial Card 3 */}
-            <div className="flex-shrink-0 w-full md:w-[600px] bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="flex h-full">
-                <div className="w-2/5 bg-gray-200">
-                  <img 
-                    src="@assets/Component 10.png" 
-                    alt="Maurício Harger" 
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="w-3/5 p-6 flex flex-col justify-between">
-                  <div>
-                    <h3 className="font-montserrat font-bold text-xl">Maurício Harger</h3>
-                    <p className="text-gray-600 text-sm mb-4">CEO - Grupo Baumgart</p>
-                    <p className="text-gray-700">
-                      Lidera a empresa com foco em inovação, sustentabilidade e expansão de mercado.
-                    </p>
-                  </div>
-                  <div className="mt-4">
-                    <img 
-                      src="@assets/Component 10.png" 
-                      alt="Vedacit Logo" 
-                      className="h-10"
-                    />
-                  </div>
-                </div>
+            {/* Imagens em slide */}
+            <div 
+              ref={slideRef}
+              className="flex overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide"
+              style={{ scrollSnapType: 'x mandatory' }}
+            >
+              <div className="flex-shrink-0 w-full snap-center px-1">
+                <img 
+                  src="@assets/Component 8.png" 
+                  alt="Case Tigre" 
+                  className="w-full h-auto rounded-lg shadow-sm"
+                />
               </div>
-            </div>
-            
-            {/* Testimonial Card 4 */}
-            <div className="flex-shrink-0 w-full md:w-[600px] bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="flex h-full">
-                <div className="w-2/5 bg-gray-200">
-                  <img 
-                    src="@assets/Component 13.png" 
-                    alt="Marcelo Strufaldi Castelli" 
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="w-3/5 p-6 flex flex-col justify-between">
-                  <div>
-                    <h3 className="font-montserrat font-bold text-xl">Marcelo Strufaldi Castelli</h3>
-                    <p className="text-gray-600 text-sm mb-4">Presidente - Votorantim Cimentos</p>
-                    <p className="text-gray-700">
-                      Líder no setor de materiais de construção, especialmente na produção de cimento, concreto, agregados e argamassas.
-                    </p>
-                  </div>
-                  <div className="mt-4">
-                    <img 
-                      src="@assets/Component 13.png" 
-                      alt="Votorantim Logo" 
-                      className="h-10"
-                    />
-                  </div>
-                </div>
+              
+              <div className="flex-shrink-0 w-full snap-center px-1">
+                <img 
+                  src="@assets/Component 9.png" 
+                  alt="Case Amanco" 
+                  className="w-full h-auto rounded-lg shadow-sm"
+                />
+              </div>
+              
+              <div className="flex-shrink-0 w-full snap-center px-1">
+                <img 
+                  src="@assets/Component 10.png" 
+                  alt="Case Vedacit" 
+                  className="w-full h-auto rounded-lg shadow-sm"
+                />
+              </div>
+              
+              <div className="flex-shrink-0 w-full snap-center px-1">
+                <img 
+                  src="@assets/Component 11.png" 
+                  alt="Case Gerdau" 
+                  className="w-full h-auto rounded-lg shadow-sm"
+                />
+              </div>
+              
+              <div className="flex-shrink-0 w-full snap-center px-1">
+                <img 
+                  src="@assets/Component 12.png" 
+                  alt="Case Eternit" 
+                  className="w-full h-auto rounded-lg shadow-sm"
+                />
+              </div>
+              
+              <div className="flex-shrink-0 w-full snap-center px-1">
+                <img 
+                  src="@assets/Component 13.png" 
+                  alt="Case Votorantim" 
+                  className="w-full h-auto rounded-lg shadow-sm"
+                />
               </div>
             </div>
           </div>
           
           {/* Indicator dots */}
-          <div className="flex justify-center space-x-2 mt-4">
-            <div className="w-2 h-2 rounded-full bg-primary"></div>
-            <div className="w-2 h-2 rounded-full bg-gray-300"></div>
-            <div className="w-2 h-2 rounded-full bg-gray-300"></div>
-            <div className="w-2 h-2 rounded-full bg-gray-300"></div>
+          <div className="flex justify-center space-x-3 mt-6">
+            {[...Array(totalSlides)].map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                  currentSlide === index ? "bg-primary" : "bg-gray-300 hover:bg-gray-400"
+                }`}
+                aria-label={`Ir para slide ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
       </Section>
