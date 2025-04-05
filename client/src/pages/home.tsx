@@ -27,6 +27,7 @@ import {
   AlertCircle,
   ArrowRight,
   ArrowUp,
+  BarChart2,
   CheckCircle,
   ChevronDown,
   ChevronLeft,
@@ -34,6 +35,8 @@ import {
   DollarSign,
   Facebook,
   Instagram,
+  Lock,
+  Loader2,
   LucideProps,
   Mail,
   MapPin,
@@ -42,6 +45,7 @@ import {
   Phone,
   Star,
   Target,
+  TrendingUp,
   UserCheck,
   Users,
   X,
@@ -498,31 +502,86 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-24 pb-16 md:pt-28 md:pb-20 bg-white">
-        <div className="container">
-          <div className="flex flex-col md:flex-row items-center">
+      <section className="relative pt-24 pb-20 md:pt-28 md:pb-24 bg-gradient-to-br from-[#0a2463] via-[#1E65DE] to-[#4989F5] text-white">
+        {/* Padrão de fundo */}
+        <div className="absolute inset-0 overflow-hidden opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full">
+            {Array.from({ length: 20 }).map((_, i) => (
+              <div 
+                key={i} 
+                className="absolute rounded-full bg-white"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  width: `${Math.random() * 50 + 10}px`,
+                  height: `${Math.random() * 50 + 10}px`,
+                  opacity: Math.random() * 0.2 + 0.1
+                }}
+              />
+            ))}
+          </div>
+        </div>
+        
+        <div className="container relative z-10">
+          <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-1/2 md:pr-6 mb-8 md:mb-0">
-              <h1 className="font-sora font-extrabold text-3xl md:text-4xl lg:text-5xl text-[#0C0910] leading-tight mb-4">
-                <span className="text-primary bg-yellow-100 px-1">Venda mais</span> e transforme sua loja de materiais de construção
+              <div className="inline-block bg-white py-1 px-3 rounded-full text-primary font-semibold text-sm mb-6">
+                MARKETING QUE VENDE, PRA QUEM VENDE MATERIAL
+              </div>
+              <h1 className="font-sora font-extrabold text-3xl md:text-4xl lg:text-5xl leading-tight mb-4">
+                <span className="text-[#F7CB15]">Transforme</span> sua loja de materiais em um{" "}
+                <span className="bg-gradient-to-r from-[#F7CB15] to-[#F7CB15] bg-no-repeat bg-bottom bg-[length:100%_8px]">
+                  ímã de clientes
+                </span>
               </h1>
-              <h2 className="font-inter font-bold text-xl md:text-2xl text-[#0C0910] opacity-80 mb-6">
-                Marketing digital especializado para quem vende materiais de construção, elétricos e hidráulicos
+              <h2 className="font-inter text-xl md:text-2xl text-white/90 mb-6">
+                Marketing digital especializado para lojas de materiais de construção, elétricos e hidráulicos que <span className="font-bold">realmente traz resultados</span>
               </h2>
-              <p className="mb-8 md:pr-12">
-                <span className="font-medium">Você está cansado de gastar com marketing sem resultados?</span> Somos a única agência que realmente entende o mercado de materiais e sabe como trazer clientes para sua loja.
-              </p>
+              
+              <div className="grid grid-cols-2 gap-6 mb-8">
+                <div className="flex items-center">
+                  <div className="mr-3 w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
+                    <TrendingUp className="h-5 w-5 text-[#F7CB15]" />
+                  </div>
+                  <span>Aumente suas vendas em +147%</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="mr-3 w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
+                    <Target className="h-5 w-5 text-[#F7CB15]" />
+                  </div>
+                  <span>Clientes qualificados</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="mr-3 w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
+                    <Users className="h-5 w-5 text-[#F7CB15]" />
+                  </div>
+                  <span>Especialistas no seu mercado</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="mr-3 w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
+                    <BarChart2 className="h-5 w-5 text-[#F7CB15]" />
+                  </div>
+                  <span>Resultados garantidos</span>
+                </div>
+              </div>
+              
               <Button 
                 variant="accent" 
                 size="lg"
                 onClick={() => scrollToSection("contato")}
-                className="shadow-md mb-2 md:mb-0"
+                className="shadow-lg mb-2 md:mb-0 text-[#0C0910] bg-[#F7CB15] hover:bg-[#e8bc0c] font-bold border-b-4 border-[#d9ae08]"
               >
-                Quero vender mais na minha loja
+                Quero aumentar minhas vendas agora!
               </Button>
             </div>
-            <div className="md:w-1/2 bg-[#F6F8FF] p-6 rounded-lg shadow-md border border-gray-100">
-              <h3 className="font-sora font-bold text-xl text-primary mb-4">Aumente suas vendas agora</h3>
-              <p className="mb-4">Preencha o formulário abaixo para receber uma análise gratuita da sua loja:</p>
+            
+            <div className="md:w-1/2 bg-white p-8 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.2)] text-black">
+              <h3 className="font-sora font-bold text-2xl text-[#0C0910] mb-2">
+                <span className="text-primary">Análise gratuita</span> da sua loja
+              </h3>
+              <p className="mb-6 text-gray-600">
+                Preencha o formulário abaixo e descubra como podemos transformar sua loja:
+              </p>
               
               <Form {...heroForm}>
                 <form onSubmit={heroForm.handleSubmit(onHeroFormSubmit)} className="space-y-4">
@@ -533,7 +592,11 @@ export default function Home() {
                       <FormItem>
                         <FormLabel className="text-sm font-medium text-[#0C0910]">Seu nome</FormLabel>
                         <FormControl>
-                          <Input {...field} />
+                          <Input 
+                            {...field} 
+                            className="border-gray-300 focus:border-primary focus:ring-1 focus:ring-primary" 
+                            placeholder="João Silva"
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -547,7 +610,12 @@ export default function Home() {
                       <FormItem>
                         <FormLabel className="text-sm font-medium text-[#0C0910]">WhatsApp</FormLabel>
                         <FormControl>
-                          <Input {...field} type="tel" />
+                          <Input 
+                            {...field} 
+                            type="tel" 
+                            className="border-gray-300 focus:border-primary focus:ring-1 focus:ring-primary" 
+                            placeholder="(XX) XXXXX-XXXX"
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -561,7 +629,11 @@ export default function Home() {
                       <FormItem>
                         <FormLabel className="text-sm font-medium text-[#0C0910]">Nome da sua loja</FormLabel>
                         <FormControl>
-                          <Input {...field} />
+                          <Input 
+                            {...field} 
+                            className="border-gray-300 focus:border-primary focus:ring-1 focus:ring-primary" 
+                            placeholder="Materiais Silva"
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -570,15 +642,23 @@ export default function Home() {
                   
                   <Button 
                     type="submit" 
-                    className="w-full shadow-md font-semibold py-3 text-white"
-                    variant="default"
+                    className="w-full shadow-lg font-bold py-3 text-[#0C0910] bg-[#F7CB15] hover:bg-[#e8bc0c] border-b-4 border-[#d9ae08]"
                     disabled={submitLeadMutation.isPending}
                   >
-                    {submitLeadMutation.isPending ? "ENVIANDO..." : "QUERO AUMENTAR MINHAS VENDAS"}
+                    {submitLeadMutation.isPending ? (
+                      <div className="flex items-center justify-center">
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        ENVIANDO...
+                      </div>
+                    ) : (
+                      "QUERO AUMENTAR MINHAS VENDAS"
+                    )}
                   </Button>
-                  <p className="text-xs text-center text-gray-500 mt-2">
-                    Fique tranquilo, não compartilhamos seus dados com ninguém
-                  </p>
+                  
+                  <div className="flex justify-center items-center text-xs text-gray-500 mt-2">
+                    <Lock className="h-3 w-3 mr-1" />
+                    <span>Seus dados estão seguros e não serão compartilhados</span>
+                  </div>
                 </form>
               </Form>
             </div>
