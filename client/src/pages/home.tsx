@@ -1088,87 +1088,90 @@ export default function Home() {
       </Section>
 
       {/* Footer */}
-      <footer className="bg-[#0C0910] text-white pt-16 pb-8">
+      <footer className="bg-[#0C0910] text-white py-12">
         <div className="container">
-          <div className="flex flex-col md:flex-row justify-between mb-12">
-            <div className="mb-8 md:mb-0">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div className="md:col-span-1">
               <Logo size="md" textColor="text-white" className="mb-4" />
-              <p className="mb-4 text-gray-300 max-w-md">
+              <p className="text-gray-300 mb-5 max-w-md">
                 Marketing especializado para lojistas de material de construção, elétrico e hidráulico. Transformamos sua presença digital em vendas reais.
               </p>
-              <div className="flex space-x-4">
+              <div className="flex space-x-5 mt-4">
                 <a href="#" className="text-gray-300 hover:text-white transition">
-                  <Facebook className="h-6 w-6" />
+                  <Facebook className="h-5 w-5" />
                 </a>
                 <a href="#" className="text-gray-300 hover:text-white transition">
-                  <Instagram className="h-6 w-6" />
+                  <Instagram className="h-5 w-5" />
                 </a>
                 <a href="#" className="text-gray-300 hover:text-white transition">
-                  <Youtube className="h-6 w-6" />
+                  <Youtube className="h-5 w-5" />
                 </a>
               </div>
             </div>
             
-            <div className="mb-8 md:mb-0">
-              <h3 className="text-xl font-sora font-bold mb-4">Links</h3>
-              <ul className="space-y-2">
+            <div className="md:col-span-1">
+              <h3 className="text-xl font-sora font-bold mb-5">Links</h3>
+              <ul className="space-y-3">
                 <li>
-                  <button onClick={() => scrollToTop()} className="text-gray-300 hover:text-white transition">
+                  <button onClick={() => scrollToTop()} className="text-gray-300 hover:text-white transition flex items-center">
+                    <ArrowRight className="h-4 w-4 mr-2 text-primary" />
                     Página Inicial
                   </button>
                 </li>
                 <li>
-                  <button onClick={() => scrollToSection("solucao")} className="text-gray-300 hover:text-white transition">
+                  <button onClick={() => scrollToSection("solucao")} className="text-gray-300 hover:text-white transition flex items-center">
+                    <ArrowRight className="h-4 w-4 mr-2 text-primary" />
                     Soluções
                   </button>
                 </li>
                 <li>
-                  <button onClick={() => scrollToSection("resultados")} className="text-gray-300 hover:text-white transition">
+                  <button onClick={() => scrollToSection("resultados")} className="text-gray-300 hover:text-white transition flex items-center">
+                    <ArrowRight className="h-4 w-4 mr-2 text-primary" />
                     Resultados
                   </button>
                 </li>
                 <li>
-                  <button onClick={() => scrollToSection("contato")} className="text-gray-300 hover:text-white transition">
+                  <button onClick={() => scrollToSection("contato")} className="text-gray-300 hover:text-white transition flex items-center">
+                    <ArrowRight className="h-4 w-4 mr-2 text-primary" />
                     Entre em contato
                   </button>
                 </li>
               </ul>
             </div>
             
-            <div className="mb-8 md:mb-0">
-              <h3 className="text-xl font-sora font-bold mb-4">Contato</h3>
-              <ul className="space-y-2">
-                <li className="flex items-start">
-                  <Mail className="h-5 w-5 text-primary mr-2 mt-0.5" />
+            <div className="md:col-span-1">
+              <h3 className="text-xl font-sora font-bold mb-5">Contato</h3>
+              <ul className="space-y-3">
+                <li className="flex items-center">
+                  <Mail className="h-5 w-5 text-primary mr-3" />
                   <span className="text-gray-300">contato@materialplus.com.br</span>
                 </li>
-                <li className="flex items-start">
-                  <Phone className="h-5 w-5 text-primary mr-2 mt-0.5" />
+                <li className="flex items-center">
+                  <Phone className="h-5 w-5 text-primary mr-3" />
                   <span className="text-gray-300">(51) 91088-005</span>
                 </li>
-
               </ul>
-            </div>
-            
-            <div>
-              <h3 className="text-xl font-sora font-bold mb-4">Newsletter</h3>
-              <p className="text-gray-300 mb-4">
-                Inscreva-se para receber dicas e novidades sobre marketing para lojas de materiais
-              </p>
-              <div className="flex">
-                <Input 
-                  type="email" 
-                  placeholder="Seu e-mail" 
-                  className="rounded-r-none"
-                />
-                <Button className="rounded-l-none">
-                  <ArrowRight className="h-5 w-5" />
-                </Button>
+              
+              <div className="mt-8">
+                <h3 className="text-xl font-sora font-bold mb-4">Newsletter</h3>
+                <p className="text-gray-300 mb-4">
+                  Inscreva-se para receber dicas e novidades sobre marketing para lojas de materiais
+                </p>
+                <div className="flex">
+                  <Input 
+                    type="email" 
+                    placeholder="Seu e-mail" 
+                    className="rounded-r-none border-gray-700 bg-gray-800 text-white"
+                  />
+                  <Button className="rounded-l-none bg-primary hover:bg-primary-dark">
+                    <ArrowRight className="h-5 w-5" />
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
           
-          <Separator className="bg-gray-700 mb-8" />
+          <Separator className="bg-gray-700 my-8" />
           
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
