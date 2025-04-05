@@ -124,8 +124,8 @@ interface ProblemCardProps {
 
 const ProblemCard = ({ icon: Icon, title, description }: ProblemCardProps) => (
   <div className="bg-white p-6 rounded-lg shadow-md">
-    <div className="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-      <Icon className="h-6 w-6 text-primary" />
+    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+      {Icon && <Icon strokeWidth={2} className="h-6 w-6 text-primary" />}
     </div>
     <h3 className="font-montserrat font-bold text-lg mb-2">{title}</h3>
     <p className="text-gray-700">{description}</p>
@@ -695,7 +695,7 @@ export default function Home() {
         
         <div className="mt-8 max-w-6xl mx-auto">
           {/* Carrossel de imagens */}
-          <div className="relative overflow-hidden rounded-lg shadow-lg">
+          <div className="relative overflow-hidden rounded-lg shadow-lg max-w-4xl mx-auto">
             {/* Botões de navegação */}
             <button 
               onClick={prevSlide}
@@ -723,7 +723,7 @@ export default function Home() {
                 <img 
                   src="/src/assets/Component 8.png" 
                   alt="Case Tigre" 
-                  className="w-full h-auto rounded-lg shadow-sm"
+                  className="w-auto h-auto max-h-[400px] mx-auto rounded-lg shadow-sm object-contain"
                 />
               </div>
               
@@ -731,7 +731,7 @@ export default function Home() {
                 <img 
                   src="/src/assets/Component 9.png" 
                   alt="Case Amanco" 
-                  className="w-full h-auto rounded-lg shadow-sm"
+                  className="w-auto h-auto max-h-[400px] mx-auto rounded-lg shadow-sm object-contain"
                 />
               </div>
               
@@ -739,7 +739,7 @@ export default function Home() {
                 <img 
                   src="/src/assets/Component 10.png" 
                   alt="Case Vedacit" 
-                  className="w-full h-auto rounded-lg shadow-sm"
+                  className="w-auto h-auto max-h-[400px] mx-auto rounded-lg shadow-sm object-contain"
                 />
               </div>
               
@@ -747,7 +747,7 @@ export default function Home() {
                 <img 
                   src="/src/assets/Component 11.png" 
                   alt="Case Gerdau" 
-                  className="w-full h-auto rounded-lg shadow-sm"
+                  className="w-auto h-auto max-h-[400px] mx-auto rounded-lg shadow-sm object-contain"
                 />
               </div>
               
@@ -755,7 +755,7 @@ export default function Home() {
                 <img 
                   src="/src/assets/Component 12.png" 
                   alt="Case Eternit" 
-                  className="w-full h-auto rounded-lg shadow-sm"
+                  className="w-auto h-auto max-h-[400px] mx-auto rounded-lg shadow-sm object-contain"
                 />
               </div>
               
@@ -763,7 +763,7 @@ export default function Home() {
                 <img 
                   src="/src/assets/Component 13.png" 
                   alt="Case Votorantim" 
-                  className="w-full h-auto rounded-lg shadow-sm"
+                  className="w-auto h-auto max-h-[400px] mx-auto rounded-lg shadow-sm object-contain"
                 />
               </div>
             </div>
