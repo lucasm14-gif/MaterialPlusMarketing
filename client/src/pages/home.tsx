@@ -325,10 +325,8 @@ export default function Home() {
   const slideRef = React.useRef<HTMLDivElement>(null);
   const { toast } = useToast();
   
-  // Estado para controlar o arrasto do carrossel
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
+  // Apenas para controle do carrossel com botões
+  
   
   // Lead Form (Hero)
   const heroForm = useForm<LeadFormData>({
@@ -418,95 +416,7 @@ export default function Home() {
     setCurrentSlide(index);
   };
   
-  // Funções para controle de arrastar o carrossel com efeito de momento
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (slideRef.current) {
-      setIsDragging(true);
-      setStartX(e.pageX - slideRef.current.offsetLeft);
-      setScrollLeft(slideRef.current.scrollLeft);
-      
-      // Adicionar classe para remover transição durante o arrastar
-      slideRef.current.classList.add('dragging');
-    }
-  };
-  
-  const handleMouseUp = () => {
-    setIsDragging(false);
-    
-    // Ajustar para o slide mais próximo após soltar com animação
-    if (slideRef.current) {
-      // Adicionar transição suave ao soltar
-      slideRef.current.classList.remove('dragging');
-      
-      const slideWidth = slideRef.current.clientWidth;
-      const newSlideIndex = Math.round(slideRef.current.scrollLeft / slideWidth);
-      setCurrentSlide(newSlideIndex);
-      
-      // Efeito suave
-      slideRef.current.scrollTo({
-        left: slideWidth * newSlideIndex,
-        behavior: 'smooth'
-      });
-    }
-  };
-  
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !slideRef.current) return;
-    e.preventDefault();
-    
-    const x = e.pageX - slideRef.current.offsetLeft;
-    const walk = (x - startX) * 2.5; // Aumentado o multiplicador para mais sensibilidade
-    
-    // Adicionar efeito de resistência aos limites
-    const maxScroll = slideRef.current.scrollWidth - slideRef.current.clientWidth;
-    const newScrollLeft = Math.max(0, Math.min(maxScroll, scrollLeft - walk));
-    
-    slideRef.current.scrollLeft = newScrollLeft;
-  };
-  
-  const handleTouchStart = (e: React.TouchEvent) => {
-    if (slideRef.current) {
-      setIsDragging(true);
-      setStartX(e.touches[0].pageX - slideRef.current.offsetLeft);
-      setScrollLeft(slideRef.current.scrollLeft);
-      
-      // Adicionar classe para remover transição durante o arrastar
-      slideRef.current.classList.add('dragging');
-    }
-  };
-  
-  const handleTouchEnd = () => {
-    setIsDragging(false);
-    
-    // Ajustar para o slide mais próximo após soltar com animação
-    if (slideRef.current) {
-      // Adicionar transição suave ao soltar
-      slideRef.current.classList.remove('dragging');
-      
-      const slideWidth = slideRef.current.clientWidth;
-      const newSlideIndex = Math.round(slideRef.current.scrollLeft / slideWidth);
-      setCurrentSlide(newSlideIndex);
-      
-      // Efeito suave
-      slideRef.current.scrollTo({
-        left: slideWidth * newSlideIndex,
-        behavior: 'smooth'
-      });
-    }
-  };
-  
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging || !slideRef.current) return;
-    
-    const x = e.touches[0].pageX - slideRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // Aumentado o multiplicador para mais sensibilidade
-    
-    // Adicionar efeito de resistência aos limites
-    const maxScroll = slideRef.current.scrollWidth - slideRef.current.clientWidth;
-    const newScrollLeft = Math.max(0, Math.min(maxScroll, scrollLeft - walk));
-    
-    slideRef.current.scrollLeft = newScrollLeft;
-  };
+  // Carrossel apenas com navegação por botões
   
   // Efeito para mover o carrossel quando o currentSlide mudar
   useEffect(() => {
@@ -886,18 +796,11 @@ export default function Home() {
               <ChevronRight className="h-6 w-6 text-primary" />
             </button>
             
-            {/* Imagens em slide com efeito de arrastar */}
+            {/* Imagens em slide - apenas navegação com botões */}
             <div 
               ref={slideRef}
-              className="flex overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide cursor-grab active:cursor-grabbing relative"
+              className="flex overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide relative"
               style={{ scrollSnapType: 'x mandatory', position: 'relative' }}
-              onMouseDown={handleMouseDown}
-              onMouseUp={handleMouseUp}
-              onMouseLeave={handleMouseUp}
-              onMouseMove={handleMouseMove}
-              onTouchStart={handleTouchStart}
-              onTouchEnd={handleTouchEnd}
-              onTouchMove={handleTouchMove}
             >
               <div className="flex-shrink-0 w-full snap-center px-1">
                 <div className="carousel-item">
@@ -920,11 +823,13 @@ export default function Home() {
               </div>
               
               <div className="flex-shrink-0 w-full snap-center px-1">
-                <img 
-                  src="/src/assets/Component 10.png" 
-                  alt="Case Vedacit" 
-                  className="w-auto h-auto max-h-[400px] mx-auto object-contain"
-                />
+                <div className="carousel-item">
+                  <img 
+                    src="/src/assets/Component 10.png" 
+                    alt="Case Vedacit" 
+                    className="w-auto h-auto max-h-[400px] mx-auto object-contain"
+                  />
+                </div>
               </div>
               
               <div className="flex-shrink-0 w-full snap-center px-1">

@@ -29,18 +29,12 @@
   scrollbar-width: none;  /* Firefox */
 }
 
-/* Estilos para o carrossel de casos com efeito de arrasto */
+/* Estilos para o carrossel de casos */
 .scrollbar-hide {
   transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* Curva de animação mais suave */
   will-change: transform; /* Otimização para animações */
   overflow-x: auto;
   scroll-behavior: smooth;
-}
-
-.scrollbar-hide.dragging {
-  transition: none;
-  cursor: grabbing;
-  scroll-behavior: auto;
 }
 
 /* Efeito de zoom suave nas imagens do carrossel ao passar o mouse */
@@ -59,33 +53,7 @@
   background-color: rgba(30, 101, 222, 0.02);
 }
 
-/* Efeito de inclinação para dar sensação de perspectiva no carrossel */
+/* Efeito de transição para as imagens do carrossel */
 .carousel-item img {
   transition: all 0.3s ease;
-}
-
-/* Indicador de "arraste" para o carrossel */
-.scrollbar-hide::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 60px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -30px;
-  margin-left: -30px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%231E65DE' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 9l4-4 4 4'/%3E%3Cpath d='M3 13h8'/%3E%3Cpath d='M19 9l-4-4-4 4'/%3E%3Cpath d='M21 13h-8'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 50%;
-  opacity: 0;
-  z-index: 10;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.scrollbar-hide.dragging::after {
-  opacity: 0.7;
 }
