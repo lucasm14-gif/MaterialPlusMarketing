@@ -560,7 +560,8 @@ export default function Home() {
                   
                   <Button 
                     type="submit" 
-                    className="w-full shadow-md font-semibold py-3"
+                    className="w-full shadow-md font-semibold py-3 hover:text-primary-foreground"
+                    variant="default"
                     disabled={submitLeadMutation.isPending}
                   >
                     {submitLeadMutation.isPending ? "ENVIANDO..." : "QUERO AUMENTAR MINHAS VENDAS"}
