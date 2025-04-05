@@ -782,7 +782,7 @@ export default function Home() {
             {/* Botões de navegação */}
             <button 
               onClick={prevSlide}
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 z-10 ml-2 transition"
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white hover:shadow-md rounded-full p-2 z-10 ml-2 transition border border-primary/20 hover:border-primary/50"
               aria-label="Anterior"
             >
               <ChevronLeft className="h-6 w-6 text-primary" />
@@ -790,7 +790,7 @@ export default function Home() {
             
             <button 
               onClick={nextSlide}
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 z-10 mr-2 transition"
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white hover:shadow-md rounded-full p-2 z-10 mr-2 transition border border-primary/20 hover:border-primary/50"
               aria-label="Próximo"
             >
               <ChevronRight className="h-6 w-6 text-primary" />
