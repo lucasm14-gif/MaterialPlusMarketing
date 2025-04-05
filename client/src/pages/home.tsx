@@ -1,0 +1,980 @@
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { useMutation } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
+import { useToast } from "@/hooks/use-toast";
+import { motion } from "framer-motion";
+
+// Components
+import { Logo } from "@/components/logo";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Separator } from "@/components/ui/separator";
+
+// Icons
+import {
+  AlertCircle,
+  ArrowRight,
+  ArrowUp,
+  CheckCircle,
+  ChevronDown,
+  DollarSign,
+  Facebook,
+  Instagram,
+  LucideProps,
+  Mail,
+  MapPin,
+  Menu,
+  MessageSquare,
+  Phone,
+  Star,
+  Target,
+  UserCheck,
+  Users,
+  X,
+  Youtube,
+} from "lucide-react";
+
+// Form schema
+const leadFormSchema = z.object({
+  name: z.string().min(2, { message: "Nome é obrigatório" }),
+  whatsapp: z.string().min(10, { message: "WhatsApp inválido" }),
+  storeName: z.string().min(2, { message: "Nome da loja é obrigatório" }),
+  email: z.string().email({ message: "Email inválido" }).optional().or(z.literal("")),
+  city: z.string().optional().or(z.literal("")),
+  message: z.string().optional().or(z.literal("")),
+});
+
+type LeadFormData = z.infer<typeof leadFormSchema>;
+
+// Section component
+interface SectionProps {
+  id?: string;
+  className?: string;
+  children: React.ReactNode;
+  bgColor?: string;
+}
+
+const Section = ({ id, className = "", children, bgColor = "bg-white" }: SectionProps) => (
+  <section id={id} className={`py-16 ${bgColor} ${className}`}>
+    <div className="container mx-auto px-4">
+      {children}
+    </div>
+  </section>
+);
+
+// Section title component
+interface SectionTitleProps {
+  title: string;
+  subtitle?: string;
+  center?: boolean;
+}
+
+const SectionTitle = ({ title, subtitle, center = true }: SectionTitleProps) => (
+  <div className={`mb-12 ${center ? "text-center" : ""}`}>
+    <h2 className="font-montserrat font-bold text-2xl md:text-3xl text-[#0C0910] mb-4">
+      {title}
+    </h2>
+    {subtitle && (
+      <p className={`text-lg ${center ? "md:w-2/3 mx-auto" : ""}`}>
+        {subtitle}
+      </p>
+    )}
+  </div>
+);
+
+// Icon item component
+interface IconItemProps {
+  icon: React.FC<LucideProps>;
+  title: string;
+  description: string;
+}
+
+const IconItem = ({ icon: Icon, title, description }: IconItemProps) => (
+  <div className="flex flex-col md:flex-row md:items-start">
+    <div className="flex-shrink-0 w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-4 md:mb-0 md:mr-4">
+      <Icon className="h-8 w-8 text-white" />
+    </div>
+    <div>
+      <h3 className="font-montserrat font-bold text-xl mb-2">{title}</h3>
+      <p className="text-gray-700">{description}</p>
+    </div>
+  </div>
+);
+
+// Problem card component
+interface ProblemCardProps {
+  icon: React.FC<LucideProps>;
+  title: string;
+  description: string;
+}
+
+const ProblemCard = ({ icon: Icon, title, description }: ProblemCardProps) => (
+  <div className="bg-white p-6 rounded-lg shadow-md">
+    <div className="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+      <Icon className="h-6 w-6 text-primary" />
+    </div>
+    <h3 className="font-montserrat font-bold text-lg mb-2">{title}</h3>
+    <p className="text-gray-700">{description}</p>
+  </div>
+);
+
+// Stat card component
+interface StatCardProps {
+  value: string;
+  label: string;
+}
+
+const StatCard = ({ value, label }: StatCardProps) => (
+  <div className="bg-white p-6 rounded-lg shadow-md text-center">
+    <div className="text-primary font-montserrat font-bold text-5xl mb-2">{value}</div>
+    <p className="text-lg font-medium">{label}</p>
+  </div>
+);
+
+// Testimonial component
+interface TestimonialProps {
+  name: string;
+  company: string;
+  image: string;
+  text: string;
+  since: string;
+  result: string;
+}
+
+const Testimonial = ({ name, company, image, text, since, result }: TestimonialProps) => (
+  <div className="bg-white p-6 rounded-lg shadow-md">
+    <div className="flex items-center mb-4">
+      <div className="w-16 h-16 bg-gray-200 rounded-full overflow-hidden mr-4">
+        <div className="w-full h-full bg-gray-300"></div>
+      </div>
+      <div>
+        <h4 className="font-montserrat font-bold text-lg">{name}</h4>
+        <p className="text-gray-600">{company}</p>
+      </div>
+    </div>
+    <div className="flex mb-4">
+      {[...Array(5)].map((_, i) => (
+        <Star key={i} className="h-5 w-5 text-yellow-500 fill-current" />
+      ))}
+    </div>
+    <p className="text-gray-700 mb-4">{text}</p>
+    <div className="flex justify-between items-center text-sm text-gray-500">
+      <span>{since}</span>
+      <span>{result}</span>
+    </div>
+  </div>
+);
+
+// Process step component
+interface ProcessStepProps {
+  number: number;
+  title: string;
+  description: string;
+}
+
+const ProcessStep = ({ number, title, description }: ProcessStepProps) => (
+  <div className="relative bg-white p-6 rounded-lg shadow-md z-10">
+    <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-4 mx-auto">
+      <span className="text-white font-bold text-xl">{number}</span>
+    </div>
+    <h3 className="font-montserrat font-bold text-lg text-center mb-2">{title}</h3>
+    <p className="text-gray-700 text-center">{description}</p>
+  </div>
+);
+
+// FAQ item component
+interface FAQItemProps {
+  question: string;
+  answer: string;
+}
+
+const FAQItem = ({ question, answer }: FAQItemProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="bg-white rounded-lg shadow-md">
+      <button
+        className="flex justify-between items-center w-full px-6 py-4 text-left font-montserrat font-bold"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span>{question}</span>
+        <ChevronDown
+          className={`h-6 w-6 text-primary transition-transform ${isOpen ? "transform rotate-180" : ""}`}
+        />
+      </button>
+      {isOpen && (
+        <div className="px-6 pb-4">
+          <p className="text-gray-700">{answer}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+// Feature item component
+interface FeatureItemProps {
+  text: string;
+}
+
+const FeatureItem = ({ text }: FeatureItemProps) => (
+  <div className="flex items-center">
+    <div className="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+      <CheckCircle className="h-4 w-4 text-white" />
+    </div>
+    <p className="text-white">{text}</p>
+  </div>
+);
+
+// Main Home component
+export default function Home() {
+  // States
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { toast } = useToast();
+  
+  // Lead Form (Hero)
+  const heroForm = useForm<LeadFormData>({
+    resolver: zodResolver(leadFormSchema),
+    defaultValues: {
+      name: "",
+      whatsapp: "",
+      storeName: "",
+      email: "",
+      city: "",
+      message: "",
+    },
+  });
+
+  // Contact Form (Final CTA)
+  const contactForm = useForm<LeadFormData>({
+    resolver: zodResolver(leadFormSchema),
+    defaultValues: {
+      name: "",
+      whatsapp: "",
+      storeName: "",
+      email: "",
+      city: "",
+      message: "",
+    },
+  });
+
+  // Form submission mutation
+  const submitLeadMutation = useMutation({
+    mutationFn: async (data: LeadFormData) => {
+      const response = await apiRequest("POST", "/api/leads", data);
+      return response.json();
+    },
+    onSuccess: (data) => {
+      toast({
+        title: "Formulário enviado com sucesso!",
+        description: "Entraremos em contato em breve.",
+      });
+    },
+    onError: (error) => {
+      toast({
+        variant: "destructive",
+        title: "Erro ao enviar formulário",
+        description: "Por favor, tente novamente mais tarde.",
+      });
+    },
+  });
+
+  // Form submission handlers
+  const onHeroFormSubmit = (data: LeadFormData) => {
+    submitLeadMutation.mutate(data);
+    heroForm.reset();
+  };
+
+  const onContactFormSubmit = (data: LeadFormData) => {
+    submitLeadMutation.mutate(data);
+    contactForm.reset();
+  };
+
+  // Scroll to section handler
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setMobileMenuOpen(false);
+    }
+  };
+
+  // Back to top button handler
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  return (
+    <div className="min-h-screen bg-[#F6F8FF] font-inter text-[#0C0910]">
+      {/* Navbar */}
+      <nav className="fixed w-full bg-white shadow-md z-50">
+        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+          <Logo />
+          <div className="hidden md:flex space-x-4 items-center">
+            <button 
+              onClick={() => scrollToSection("solucao")} 
+              className="text-[#0C0910] hover:text-primary transition"
+            >
+              Soluções
+            </button>
+            <button 
+              onClick={() => scrollToSection("resultados")} 
+              className="text-[#0C0910] hover:text-primary transition"
+            >
+              Resultados
+            </button>
+            <Button 
+              onClick={() => scrollToSection("contato")}
+            >
+              Fale Conosco
+            </Button>
+          </div>
+          <button 
+            className="md:hidden text-[#0C0910]"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
+        
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-white pb-4 px-4">
+            <button 
+              onClick={() => scrollToSection("solucao")}
+              className="block py-2 text-[#0C0910] hover:text-primary w-full text-left"
+            >
+              Soluções
+            </button>
+            <button 
+              onClick={() => scrollToSection("resultados")}
+              className="block py-2 text-[#0C0910] hover:text-primary w-full text-left"
+            >
+              Resultados
+            </button>
+            <button 
+              onClick={() => scrollToSection("contato")}
+              className="block py-2 text-primary font-semibold w-full text-left"
+            >
+              Fale Conosco
+            </button>
+          </div>
+        )}
+      </nav>
+
+      {/* Hero Section */}
+      <section className="pt-24 pb-16 md:pt-28 md:pb-20 bg-primary bg-opacity-5">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center">
+            <div className="md:w-1/2 md:pr-6 mb-8 md:mb-0">
+              <h1 className="font-montserrat font-extrabold text-3xl md:text-4xl lg:text-5xl text-[#0C0910] leading-tight mb-4">
+                <span className="text-primary">Venda mais</span> e transforme sua loja de materiais de construção
+              </h1>
+              <h2 className="font-montserrat font-bold text-xl md:text-2xl text-[#0C0910] opacity-80 mb-6">
+                Marketing digital especializado para quem vende materiais de construção, elétricos e hidráulicos
+              </h2>
+              <p className="mb-8 md:pr-12">
+                <span className="font-medium">Você está cansado de gastar com marketing sem resultados?</span> Somos a única agência que realmente entende o mercado de materiais e sabe como trazer clientes para sua loja.
+              </p>
+              <Button 
+                variant="accent" 
+                size="lg"
+                onClick={() => scrollToSection("contato")}
+                className="shadow-md mb-2 md:mb-0"
+              >
+                Quero vender mais na minha loja
+              </Button>
+            </div>
+            <div className="md:w-1/2 bg-white p-6 rounded-lg shadow-md">
+              <h3 className="font-montserrat font-bold text-xl text-primary mb-4">Aumente suas vendas agora</h3>
+              <p className="mb-4">Preencha o formulário abaixo para receber uma análise gratuita da sua loja:</p>
+              
+              <Form {...heroForm}>
+                <form onSubmit={heroForm.handleSubmit(onHeroFormSubmit)} className="space-y-4">
+                  <FormField
+                    control={heroForm.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-sm font-medium text-[#0C0910]">Seu nome</FormLabel>
+                        <FormControl>
+                          <Input {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={heroForm.control}
+                    name="whatsapp"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-sm font-medium text-[#0C0910]">WhatsApp</FormLabel>
+                        <FormControl>
+                          <Input {...field} type="tel" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={heroForm.control}
+                    name="storeName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-sm font-medium text-[#0C0910]">Nome da sua loja</FormLabel>
+                        <FormControl>
+                          <Input {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <Button 
+                    type="submit" 
+                    className="w-full shadow-md font-semibold py-3"
+                    disabled={submitLeadMutation.isPending}
+                  >
+                    {submitLeadMutation.isPending ? "ENVIANDO..." : "QUERO AUMENTAR MINHAS VENDAS"}
+                  </Button>
+                  <p className="text-xs text-center text-gray-500 mt-2">
+                    Fique tranquilo, não compartilhamos seus dados com ninguém
+                  </p>
+                </form>
+              </Form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Clients Section */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <p className="text-center text-lg mb-8">
+            Ajudamos lojistas de material de construção e elétrico por todo o Brasil
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            <div className="text-gray-400 font-bold">CONSTRULAR</div>
+            <div className="text-gray-400 font-bold">ELETROTEC</div>
+            <div className="text-gray-400 font-bold">CONSTRUSÃO</div>
+            <div className="text-gray-400 font-bold">HIDROPLUS</div>
+            <div className="text-gray-400 font-bold">ELÉTRICA SILVA</div>
+            <div className="text-gray-400 font-bold">IRMÃOS FERRAGENS</div>
+          </div>
+        </div>
+      </section>
+
+      {/* Problem Section */}
+      <Section id="problema" bgColor="bg-[#F6F8FF]">
+        <SectionTitle
+          title="Problemas que todo lojista de materiais enfrenta"
+          subtitle="Se você já passou por alguma dessas situações, você não está sozinho..."
+        />
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <ProblemCard
+            icon={AlertCircle}
+            title="Investimento sem retorno"
+            description="Você já investiu em agências de marketing que prometeram muito, entregaram pouco e não entendiam nada do seu segmento."
+          />
+          
+          <ProblemCard
+            icon={Users}
+            title="Redes sociais sem estratégia"
+            description="Sua loja está nas redes sociais, mas as publicações não geram engajamento, leads ou vendas reais para o seu negócio."
+          />
+          
+          <ProblemCard
+            icon={DollarSign}
+            title="Campanhas caras e ineficientes"
+            description="Anúncios no Google e Facebook que drenam seu orçamento mas não trazem os clientes certos para o seu estabelecimento."
+          />
+          
+          <ProblemCard
+            icon={Target}
+            title="Concorrência digital crescente"
+            description="Lojas concorrentes estão dominando as buscas no Google, enquanto sua empresa é pouco encontrada por clientes em potencial."
+          />
+          
+          <ProblemCard
+            icon={AlertCircle}
+            title="Falta de controle e métricas"
+            description="Você não consegue medir com precisão o retorno do seu investimento em marketing e não sabe o que está funcionando."
+          />
+          
+          <ProblemCard
+            icon={MessageSquare}
+            title="Dificuldade em acompanhar leads"
+            description="Mensagens de clientes se perdem, orçamentos demoram para ser enviados e vendas potenciais escapam por falta de organização."
+          />
+        </div>
+        
+        <div className="mt-12 text-center">
+          <p className="font-semibold text-lg mb-4">
+            Não deixe esses problemas continuarem afetando seu negócio
+          </p>
+          <Button 
+            onClick={() => scrollToSection("contato")}
+            size="lg"
+            className="shadow-md"
+          >
+            Quero resolver esses problemas
+          </Button>
+        </div>
+      </Section>
+
+      {/* Solution Section */}
+      <Section id="solucao" bgColor="bg-white">
+        <SectionTitle
+          title="A solução ideal para lojistas de materiais"
+          subtitle="Marketing digital especializado que realmente entende o seu mercado e gera resultados mensuráveis"
+        />
+        
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-16">
+          <IconItem
+            icon={Target}
+            title="Estratégia personalizada para materiais"
+            description="Desenvolvemos um plano de marketing exclusivo que considera as peculiaridades do mercado de materiais de construção, elétricos e hidráulicos. Entendemos seu cliente e suas necessidades."
+          />
+          
+          <IconItem
+            icon={ArrowUp}
+            title="Tráfego pago que converte"
+            description="Criamos campanhas no Google e Meta que trazem clientes realmente interessados em comprar. Focamos nas palavras-chave certas e no público que realmente importa para o seu negócio."
+          />
+          
+          <IconItem
+            icon={UserCheck}
+            title="Automação com CRM especializado"
+            description="Implementamos sistemas que automatizam o acompanhamento de leads, facilita a emissão de orçamentos e garante que nenhuma oportunidade de venda se perca. Integramos com seus sistemas atuais."
+          />
+          
+          <IconItem
+            icon={ArrowRight}
+            title="Social Media com estratégia"
+            description="Não apenas publicamos conteúdo; criamos estratégias que transformam suas redes sociais em canais de vendas. Produzimos conteúdo técnico, confiável e que reforça a autoridade da sua loja."
+          />
+          
+          <IconItem
+            icon={CheckCircle}
+            title="Relatórios de desempenho reais"
+            description="Acompanhe o resultado do seu investimento com relatórios claros e objetivos. Métricas que realmente importam: vendas, leads, ROI e crescimento do seu negócio."
+          />
+          
+          <IconItem
+            icon={Users}
+            title="Acompanhamento consultivo"
+            description="Reuniões periódicas com nossa equipe para analisar resultados e ajustar estratégias. Uma parceria real focada no crescimento contínuo do seu negócio."
+          />
+        </div>
+        
+        <div className="bg-[#F6F8FF] p-8 rounded-lg shadow-md">
+          <div className="flex flex-col md:flex-row md:items-center">
+            <div className="md:w-2/3 mb-6 md:mb-0 md:pr-8">
+              <h3 className="font-montserrat font-bold text-2xl mb-4">
+                Marketing que vende, pra quem vende material
+              </h3>
+              <p className="mb-4">
+                Na Material Plus, nosso compromisso não é apenas com tráfego ou visualizações, mas com vendas reais para sua loja. Somos a única agência que entende profundamente o mercado de materiais.
+              </p>
+              <Button 
+                variant="accent"
+                size="lg"
+                onClick={() => scrollToSection("contato")}
+                className="shadow-md"
+              >
+                Quero conhecer mais
+              </Button>
+            </div>
+            <div className="md:w-1/3">
+              <div className="bg-gray-300 rounded-lg shadow-md w-full h-48 md:h-64"></div>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Results Section */}
+      <Section id="resultados" bgColor="bg-[#F6F8FF]">
+        <SectionTitle
+          title="Resultados reais para lojistas como você"
+          subtitle="Veja como temos transformado o marketing digital de lojas de materiais por todo o Brasil"
+        />
+        
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <StatCard value="+147%" label="Aumento médio no faturamento das lojas" />
+          <StatCard value="+283%" label="Mais leads qualificados a cada mês" />
+          <StatCard value="68%" label="Redução no custo de aquisição por cliente" />
+        </div>
+        
+        <div className="grid md:grid-cols-2 gap-8">
+          <Testimonial
+            name="Carlos Silva"
+            company="Constrular Materiais, São Paulo"
+            image=""
+            text="Depois de trabalhar com várias agências de marketing sem resultado, encontramos a Material Plus. Em 6 meses, aumentamos nosso faturamento em 63% e o Instagram passou a gerar vendas reais. A diferença é que eles realmente entendem o mercado de materiais."
+            since="Cliente desde: Março/2022"
+            result="+63% em vendas"
+          />
+          
+          <Testimonial
+            name="Ana Oliveira"
+            company="Eletrotec, Belo Horizonte"
+            image=""
+            text="A implementação do sistema de CRM e a automação dos orçamentos transformou nossa operação. Conseguimos atender mais clientes com a mesma equipe e o Google Ads finalmente começou a dar resultado. Nosso ROI triplicou em 4 meses."
+            since="Cliente desde: Janeiro/2023"
+            result="+215% em leads"
+          />
+        </div>
+        
+        <div className="mt-12 text-center">
+          <p className="font-semibold text-lg mb-4">
+            Quer resultados como estes para sua loja?
+          </p>
+          <Button 
+            variant="accent"
+            size="lg"
+            onClick={() => scrollToSection("contato")}
+            className="shadow-md"
+          >
+            Quero aumentar minhas vendas
+          </Button>
+        </div>
+      </Section>
+
+      {/* Process Section */}
+      <Section bgColor="bg-white">
+        <SectionTitle
+          title="Como trabalhamos"
+          subtitle="Um processo simples para transformar sua presença digital e aumentar suas vendas"
+        />
+        
+        <div className="relative">
+          {/* Progress line */}
+          <div className="hidden md:block absolute top-32 left-0 right-0 h-1 bg-gray-200 z-0"></div>
+          
+          <div className="grid md:grid-cols-4 gap-8">
+            <ProcessStep
+              number={1}
+              title="Diagnóstico"
+              description="Analisamos sua loja, mercado e concorrência para identificar oportunidades de crescimento."
+            />
+            
+            <ProcessStep
+              number={2}
+              title="Estratégia"
+              description="Criamos um plano personalizado baseado nos objetivos e nas peculiaridades do seu negócio."
+            />
+            
+            <ProcessStep
+              number={3}
+              title="Implementação"
+              description="Colocamos o plano em prática, com campanhas, conteúdo e automações que geram resultado."
+            />
+            
+            <ProcessStep
+              number={4}
+              title="Crescimento"
+              description="Acompanhamos, medimos e ajustamos constantemente para garantir resultados cada vez melhores."
+            />
+          </div>
+        </div>
+      </Section>
+
+      {/* Final CTA Section */}
+      <section id="contato" className="py-20 bg-primary">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+            <div className="md:w-1/2 mb-8 md:mb-0">
+              <h2 className="text-white font-montserrat font-extrabold text-3xl md:text-4xl mb-6">
+                Vamos conversar sobre como vender mais na sua loja?
+              </h2>
+              <p className="text-white opacity-90 mb-6 text-lg">
+                Preencha o formulário ao lado para uma consultoria gratuita e descubra como podemos transformar o marketing digital da sua loja de materiais.
+              </p>
+              <div className="space-y-4">
+                <FeatureItem text="Atendimento exclusivo para lojistas de materiais" />
+                <FeatureItem text="Planos personalizados de acordo com seu orçamento" />
+                <FeatureItem text="Resultados mensuráveis com foco em vendas reais" />
+                <FeatureItem text="Equipe especializada no mercado de materiais" />
+              </div>
+            </div>
+            
+            <div className="md:w-5/12 bg-white p-8 rounded-lg shadow-lg">
+              <h3 className="font-montserrat font-bold text-xl text-primary mb-4">
+                Solicite uma análise gratuita
+              </h3>
+              
+              <Form {...contactForm}>
+                <form onSubmit={contactForm.handleSubmit(onContactFormSubmit)} className="space-y-4">
+                  <FormField
+                    control={contactForm.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-sm font-medium text-[#0C0910]">Nome completo</FormLabel>
+                        <FormControl>
+                          <Input {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={contactForm.control}
+                    name="whatsapp"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-sm font-medium text-[#0C0910]">WhatsApp</FormLabel>
+                        <FormControl>
+                          <Input {...field} type="tel" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={contactForm.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-sm font-medium text-[#0C0910]">E-mail</FormLabel>
+                        <FormControl>
+                          <Input {...field} type="email" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={contactForm.control}
+                    name="storeName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-sm font-medium text-[#0C0910]">Nome da loja</FormLabel>
+                        <FormControl>
+                          <Input {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={contactForm.control}
+                    name="city"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-sm font-medium text-[#0C0910]">Cidade</FormLabel>
+                        <FormControl>
+                          <Input {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={contactForm.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-sm font-medium text-[#0C0910]">O que você espera do marketing digital?</FormLabel>
+                        <FormControl>
+                          <Textarea {...field} rows={3} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <Button 
+                    type="submit" 
+                    variant="accent"
+                    className="w-full shadow-md font-semibold py-3"
+                    disabled={submitLeadMutation.isPending}
+                  >
+                    {submitLeadMutation.isPending ? "ENVIANDO..." : "SOLICITAR ANÁLISE GRATUITA"}
+                  </Button>
+                  <p className="text-xs text-center text-gray-500 mt-2">
+                    Ao enviar, você concorda em receber contato da nossa equipe
+                  </p>
+                </form>
+              </Form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <Section bgColor="bg-[#F6F8FF]">
+        <SectionTitle
+          title="Perguntas Frequentes"
+          subtitle="Tire suas dúvidas sobre nossos serviços"
+        />
+        
+        <div className="max-w-3xl mx-auto space-y-4">
+          <FAQItem
+            question="Quanto tempo leva para ver resultados?"
+            answer="Nossos clientes costumam ver melhorias significativas em 30 a 60 dias. Tráfego e leads começam a aumentar já no primeiro mês, e o impacto nas vendas geralmente se torna evidente a partir do segundo mês, dependendo do ciclo de compra do seu cliente."
+          />
+          
+          <FAQItem
+            question="Como vocês se diferenciam de outras agências?"
+            answer="Somos especializados exclusivamente no mercado de materiais de construção, elétricos e hidráulicos. Nossa equipe entende as peculiaridades do setor, o comportamento do cliente e as melhores estratégias para esse mercado específico. Além disso, nosso foco é em resultados mensuráveis, não apenas em métricas de vaidade."
+          />
+          
+          <FAQItem
+            question="Qual o investimento necessário?"
+            answer="Trabalhamos com planos personalizados que se adequam ao tamanho da sua loja e aos seus objetivos. Nossos investimentos iniciam em R$1.997/mês para lojas de pequeno porte e podem chegar a R$7.997/mês para redes com múltiplas unidades. Cada plano é customizado após uma análise detalhada das necessidades do cliente."
+          />
+          
+          <FAQItem
+            question="Como funcionam os relatórios e métricas?"
+            answer="Disponibilizamos um dashboard personalizado onde você pode acompanhar em tempo real os principais KPIs: tráfego, leads, conversões, custo por aquisição e ROI. Além disso, realizamos reuniões mensais para análise aprofundada dos resultados e ajustes de estratégia."
+          />
+          
+          <FAQItem
+            question="Vocês trabalham com contratos de fidelidade?"
+            answer="Trabalhamos com contratos iniciais de 3 meses, pois este é o tempo mínimo para implementar a estratégia e começar a ver resultados consistentes. Após este período, o contrato se renova automaticamente mensal, mas pode ser cancelado com 30 dias de antecedência. Acreditamos que nossos resultados serão o melhor motivo para você continuar conosco."
+          />
+        </div>
+      </Section>
+
+      {/* Footer */}
+      <footer className="bg-[#0C0910] text-white pt-16 pb-8">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between mb-12">
+            <div className="mb-8 md:mb-0">
+              <Logo size="md" textColor="text-white" className="mb-4" />
+              <p className="mb-4 text-gray-300 max-w-md">
+                Marketing especializado para lojistas de material de construção, elétrico e hidráulico. Transformamos sua presença digital em vendas reais.
+              </p>
+              <div className="flex space-x-4">
+                <a href="#" className="text-gray-300 hover:text-white transition">
+                  <Facebook className="h-6 w-6" />
+                </a>
+                <a href="#" className="text-gray-300 hover:text-white transition">
+                  <Instagram className="h-6 w-6" />
+                </a>
+                <a href="#" className="text-gray-300 hover:text-white transition">
+                  <Youtube className="h-6 w-6" />
+                </a>
+              </div>
+            </div>
+            
+            <div className="mb-8 md:mb-0">
+              <h3 className="text-xl font-montserrat font-bold mb-4">Links</h3>
+              <ul className="space-y-2">
+                <li>
+                  <button onClick={() => scrollToTop()} className="text-gray-300 hover:text-white transition">
+                    Página Inicial
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => scrollToSection("solucao")} className="text-gray-300 hover:text-white transition">
+                    Soluções
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => scrollToSection("resultados")} className="text-gray-300 hover:text-white transition">
+                    Resultados
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => scrollToSection("contato")} className="text-gray-300 hover:text-white transition">
+                    Entre em contato
+                  </button>
+                </li>
+              </ul>
+            </div>
+            
+            <div className="mb-8 md:mb-0">
+              <h3 className="text-xl font-montserrat font-bold mb-4">Contato</h3>
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <Mail className="h-5 w-5 text-primary mr-2 mt-0.5" />
+                  <span className="text-gray-300">contato@materialplus.com.br</span>
+                </li>
+                <li className="flex items-start">
+                  <Phone className="h-5 w-5 text-primary mr-2 mt-0.5" />
+                  <span className="text-gray-300">(11) 98765-4321</span>
+                </li>
+                <li className="flex items-start">
+                  <MapPin className="h-5 w-5 text-primary mr-2 mt-0.5" />
+                  <span className="text-gray-300">Av. Paulista, 1000 - São Paulo/SP</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="text-xl font-montserrat font-bold mb-4">Newsletter</h3>
+              <p className="text-gray-300 mb-4">
+                Inscreva-se para receber dicas e novidades sobre marketing para lojas de materiais
+              </p>
+              <div className="flex">
+                <Input 
+                  type="email" 
+                  placeholder="Seu e-mail" 
+                  className="rounded-r-none"
+                />
+                <Button className="rounded-l-none">
+                  <ArrowRight className="h-5 w-5" />
+                </Button>
+              </div>
+            </div>
+          </div>
+          
+          <Separator className="bg-gray-700 mb-8" />
+          
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-gray-400 text-sm mb-4 md:mb-0">
+              &copy; {new Date().getFullYear()} Material Plus. Todos os direitos reservados.
+            </p>
+            <div className="flex space-x-6">
+              <a href="#" className="text-gray-400 hover:text-white text-sm transition">
+                Termos de Uso
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white text-sm transition">
+                Política de Privacidade
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      {/* WhatsApp Button */}
+      <motion.a
+        href="https://wa.me/5511987654321"
+        className="fixed bottom-8 right-8 bg-green-500 hover:bg-green-600 w-14 h-14 rounded-full flex items-center justify-center shadow-lg z-50"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          className="h-8 w-8 text-white" 
+          viewBox="0 0 24 24" 
+          fill="currentColor"
+        >
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+        </svg>
+      </motion.a>
+    </div>
+  );
+}
