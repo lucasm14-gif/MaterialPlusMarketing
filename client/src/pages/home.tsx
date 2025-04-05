@@ -721,7 +721,7 @@ export default function Home() {
             >
               <div className="flex-shrink-0 w-full snap-center px-1">
                 <img 
-                  src="@assets/Component 8.png" 
+                  src="/src/assets/Component 8.png" 
                   alt="Case Tigre" 
                   className="w-full h-auto rounded-lg shadow-sm"
                 />
@@ -729,7 +729,7 @@ export default function Home() {
               
               <div className="flex-shrink-0 w-full snap-center px-1">
                 <img 
-                  src="@assets/Component 9.png" 
+                  src="/src/assets/Component 9.png" 
                   alt="Case Amanco" 
                   className="w-full h-auto rounded-lg shadow-sm"
                 />
@@ -737,7 +737,7 @@ export default function Home() {
               
               <div className="flex-shrink-0 w-full snap-center px-1">
                 <img 
-                  src="@assets/Component 10.png" 
+                  src="/src/assets/Component 10.png" 
                   alt="Case Vedacit" 
                   className="w-full h-auto rounded-lg shadow-sm"
                 />
@@ -745,7 +745,7 @@ export default function Home() {
               
               <div className="flex-shrink-0 w-full snap-center px-1">
                 <img 
-                  src="@assets/Component 11.png" 
+                  src="/src/assets/Component 11.png" 
                   alt="Case Gerdau" 
                   className="w-full h-auto rounded-lg shadow-sm"
                 />
@@ -753,7 +753,7 @@ export default function Home() {
               
               <div className="flex-shrink-0 w-full snap-center px-1">
                 <img 
-                  src="@assets/Component 12.png" 
+                  src="/src/assets/Component 12.png" 
                   alt="Case Eternit" 
                   className="w-full h-auto rounded-lg shadow-sm"
                 />
@@ -761,7 +761,7 @@ export default function Home() {
               
               <div className="flex-shrink-0 w-full snap-center px-1">
                 <img 
-                  src="@assets/Component 13.png" 
+                  src="/src/assets/Component 13.png" 
                   alt="Case Votorantim" 
                   className="w-full h-auto rounded-lg shadow-sm"
                 />
