@@ -69,8 +69,8 @@ interface SectionProps {
 }
 
 const Section = ({ id, className = "", children, bgColor = "bg-white" }: SectionProps) => (
-  <section id={id} className={`py-16 ${bgColor} ${className}`}>
-    <div className="container mx-auto px-4">
+  <section id={id} className={`py-20 ${bgColor} ${className}`}>
+    <div className="container">
       {children}
     </div>
   </section>
@@ -350,7 +350,7 @@ export default function Home() {
     <div className="min-h-screen bg-[#F6F8FF] font-inter text-[#0C0910]">
       {/* Navbar */}
       <nav className="fixed w-full bg-white shadow-md z-50">
-        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div className="container py-3 flex justify-between items-center">
           <Logo />
           <div className="hidden md:flex space-x-4 items-center">
             <button 
@@ -381,7 +381,7 @@ export default function Home() {
         
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white pb-4 px-4">
+          <div className="md:hidden bg-white pb-4 container">
             <button 
               onClick={() => scrollToSection("solucao")}
               className="block py-2 text-[#0C0910] hover:text-primary w-full text-left"
@@ -406,7 +406,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="pt-24 pb-16 md:pt-28 md:pb-20 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <div className="flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 md:pr-6 mb-8 md:mb-0">
               <h1 className="font-montserrat font-extrabold text-3xl md:text-4xl lg:text-5xl text-[#0C0910] leading-tight mb-4">
@@ -494,7 +494,7 @@ export default function Home() {
 
       {/* Clients Section */}
       <section className="py-12 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <p className="text-center text-lg mb-8">
             Ajudamos lojistas de material de construção e elétrico por todo o Brasil
           </p>
@@ -826,7 +826,7 @@ export default function Home() {
 
       {/* Final CTA Section */}
       <section id="contato" className="py-20 bg-primary">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
             <div className="md:w-1/2 mb-8 md:mb-0">
               <h2 className="text-white font-montserrat font-extrabold text-3xl md:text-4xl mb-6">
@@ -989,7 +989,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="bg-[#0C0910] text-white pt-16 pb-8">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <div className="flex flex-col md:flex-row justify-between mb-12">
             <div className="mb-8 md:mb-0">
               <Logo size="md" textColor="text-white" className="mb-4" />
