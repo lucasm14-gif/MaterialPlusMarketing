@@ -104,15 +104,28 @@ interface IconItemProps {
 }
 
 const IconItem = ({ icon: Icon, title, description }: IconItemProps) => (
-  <div className="flex flex-col md:flex-row md:items-start">
-    <div className="flex-shrink-0 w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-4 md:mb-0 md:mr-4">
+  <motion.div 
+    className="flex flex-col md:flex-row md:items-start p-4 rounded-lg cursor-pointer"
+    initial={{ backgroundColor: "transparent" }}
+    whileHover={{ 
+      backgroundColor: "rgba(30, 101, 222, 0.05)", 
+      y: -5,
+      transition: { duration: 0.2 }
+    }}
+    transition={{ duration: 0.3 }}
+  >
+    <motion.div 
+      className="flex-shrink-0 w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-4 md:mb-0 md:mr-4"
+      whileHover={{ scale: 1.05 }}
+      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+    >
       <Icon className="h-8 w-8 text-white" />
-    </div>
+    </motion.div>
     <div>
       <h3 className="font-montserrat font-bold text-xl mb-2">{title}</h3>
       <p className="text-gray-700">{description}</p>
     </div>
-  </div>
+  </motion.div>
 );
 
 // Problem card component
@@ -123,13 +136,27 @@ interface ProblemCardProps {
 }
 
 const ProblemCard = ({ icon: Icon, title, description }: ProblemCardProps) => (
-  <div className="bg-white p-6 rounded-lg shadow-md">
-    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+  <motion.div 
+    className="bg-white p-6 rounded-lg shadow-md cursor-pointer"
+    whileHover={{ 
+      y: -8,
+      boxShadow: "0 12px 25px rgba(0, 0, 0, 0.07)",
+    }}
+    transition={{ type: "spring", stiffness: 300, damping: 15 }}
+  >
+    <motion.div 
+      className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+      whileHover={{ 
+        scale: 1.1,
+        backgroundColor: "rgba(30, 101, 222, 0.2)"
+      }}
+      transition={{ type: "spring", stiffness: 500 }}
+    >
       {Icon && <Icon strokeWidth={2} className="h-6 w-6 text-primary" />}
-    </div>
+    </motion.div>
     <h3 className="font-montserrat font-bold text-lg mb-2">{title}</h3>
     <p className="text-gray-700">{description}</p>
-  </div>
+  </motion.div>
 );
 
 // Stat card component
@@ -156,27 +183,59 @@ interface TestimonialProps {
 }
 
 const Testimonial = ({ name, company, image, text, since, result }: TestimonialProps) => (
-  <div className="bg-white p-6 rounded-lg shadow-md">
+  <motion.div 
+    className="bg-white p-6 rounded-lg shadow-md cursor-pointer"
+    whileHover={{ 
+      scale: 1.02,
+      boxShadow: "0 10px 30px rgba(0, 0, 0, 0.08)",
+      backgroundColor: "rgba(255, 255, 255, 0.95)"
+    }}
+    transition={{ type: "spring", stiffness: 300, damping: 25 }}
+  >
     <div className="flex items-center mb-4">
-      <div className="w-16 h-16 bg-gray-200 rounded-full overflow-hidden mr-4">
+      <motion.div 
+        className="w-16 h-16 bg-gray-200 rounded-full overflow-hidden mr-4"
+        whileHover={{ scale: 1.1 }}
+        transition={{ type: "spring", stiffness: 300 }}
+      >
         <div className="w-full h-full bg-gray-300"></div>
-      </div>
+      </motion.div>
       <div>
         <h4 className="font-montserrat font-bold text-lg">{name}</h4>
         <p className="text-gray-600">{company}</p>
       </div>
     </div>
-    <div className="flex mb-4">
+    <motion.div 
+      className="flex mb-4"
+      whileHover={{ 
+        x: 5,
+        transition: { staggerChildren: 0.1, delayChildren: 0.05 }
+      }}
+    >
       {[...Array(5)].map((_, i) => (
-        <Star key={i} className="h-5 w-5 text-yellow-500 fill-current" />
+        <motion.div
+          key={i}
+          whileHover={{ scale: 1.3, rotate: 10 }}
+          transition={{ type: "spring", stiffness: 500 }}
+        >
+          <Star className="h-5 w-5 text-yellow-500 fill-current" />
+        </motion.div>
       ))}
-    </div>
+    </motion.div>
     <p className="text-gray-700 mb-4">{text}</p>
     <div className="flex justify-between items-center text-sm text-gray-500">
       <span>{since}</span>
-      <span>{result}</span>
+      <motion.span 
+        whileHover={{ 
+          scale: 1.1,
+          color: "#1E65DE",
+          fontWeight: "bold"
+        }}
+      >
+        {result}
+      </motion.span>
     </div>
-  </div>
+  </motion.div>
 );
 
 // Process step component
@@ -187,13 +246,32 @@ interface ProcessStepProps {
 }
 
 const ProcessStep = ({ number, title, description }: ProcessStepProps) => (
-  <div className="relative bg-white p-6 rounded-lg shadow-md z-10">
-    <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-4 mx-auto">
+  <motion.div 
+    className="relative bg-white p-6 rounded-lg shadow-md z-10 cursor-pointer"
+    whileHover={{ 
+      scale: 1.03,
+      boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
+    }}
+    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+  >
+    <motion.div 
+      className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-4 mx-auto"
+      whileHover={{ 
+        scale: 1.1,
+        rotate: [0, -10, 10, -10, 0],
+        transition: { 
+          rotate: {
+            duration: 0.5,
+            ease: "easeInOut"
+          }
+        }
+      }}
+    >
       <span className="text-white font-bold text-xl">{number}</span>
-    </div>
+    </motion.div>
     <h3 className="font-montserrat font-bold text-lg text-center mb-2">{title}</h3>
     <p className="text-gray-700 text-center">{description}</p>
-  </div>
+  </motion.div>
 );
 
 // FAQ item component
