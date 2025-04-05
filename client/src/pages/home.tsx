@@ -85,7 +85,7 @@ interface SectionTitleProps {
 
 const SectionTitle = ({ title, subtitle, center = true }: SectionTitleProps) => (
   <div className={`mb-12 ${center ? "text-center" : ""}`}>
-    <h2 className="font-montserrat font-bold text-2xl md:text-3xl text-[#0C0910] mb-4">
+    <h2 className="font-sora font-bold text-2xl md:text-3xl text-[#0C0910] mb-4">
       {title}
     </h2>
     {subtitle && (
@@ -122,7 +122,7 @@ const IconItem = ({ icon: Icon, title, description }: IconItemProps) => (
       <Icon className="h-8 w-8 text-white" />
     </motion.div>
     <div>
-      <h3 className="font-montserrat font-bold text-xl mb-2">{title}</h3>
+      <h3 className="font-sora font-bold text-xl mb-2">{title}</h3>
       <p className="text-gray-700">{description}</p>
     </div>
   </motion.div>
@@ -154,7 +154,7 @@ const ProblemCard = ({ icon: Icon, title, description }: ProblemCardProps) => (
     >
       {Icon && <Icon strokeWidth={2} className="h-6 w-6 text-primary" />}
     </motion.div>
-    <h3 className="font-montserrat font-bold text-lg mb-2">{title}</h3>
+    <h3 className="font-sora font-bold text-lg mb-2">{title}</h3>
     <p className="text-gray-700">{description}</p>
   </motion.div>
 );
@@ -269,7 +269,7 @@ const ProcessStep = ({ number, title, description }: ProcessStepProps) => (
     >
       <span className="text-white font-bold text-xl">{number}</span>
     </motion.div>
-    <h3 className="font-montserrat font-bold text-lg text-center mb-2">{title}</h3>
+    <h3 className="font-sora font-bold text-lg text-center mb-2">{title}</h3>
     <p className="text-gray-700 text-center">{description}</p>
   </motion.div>
 );
@@ -286,7 +286,7 @@ const FAQItem = ({ question, answer }: FAQItemProps) => {
   return (
     <div className="bg-white rounded-lg shadow-md">
       <button
-        className="flex justify-between items-center w-full px-6 py-4 text-left font-montserrat font-bold"
+        className="flex justify-between items-center w-full px-6 py-4 text-left font-sora font-bold"
         onClick={() => setIsOpen(!isOpen)}
       >
         <span>{question}</span>
@@ -324,6 +324,11 @@ export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = React.useRef<HTMLDivElement>(null);
   const { toast } = useToast();
+  
+  // Estado para controlar o arrasto do carrossel
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
   
   // Lead Form (Hero)
   const heroForm = useForm<LeadFormData>({
@@ -413,6 +418,62 @@ export default function Home() {
     setCurrentSlide(index);
   };
   
+  // Funções para controle de arrastar o carrossel
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (slideRef.current) {
+      setIsDragging(true);
+      setStartX(e.pageX - slideRef.current.offsetLeft);
+      setScrollLeft(slideRef.current.scrollLeft);
+    }
+  };
+  
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    
+    // Ajustar para o slide mais próximo após soltar
+    if (slideRef.current) {
+      const slideWidth = slideRef.current.clientWidth;
+      const newSlideIndex = Math.round(slideRef.current.scrollLeft / slideWidth);
+      setCurrentSlide(newSlideIndex);
+    }
+  };
+  
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !slideRef.current) return;
+    e.preventDefault();
+    
+    const x = e.pageX - slideRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5; // Multiplicador de velocidade
+    slideRef.current.scrollLeft = scrollLeft - walk;
+  };
+  
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (slideRef.current) {
+      setIsDragging(true);
+      setStartX(e.touches[0].pageX - slideRef.current.offsetLeft);
+      setScrollLeft(slideRef.current.scrollLeft);
+    }
+  };
+  
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+    
+    // Ajustar para o slide mais próximo após soltar
+    if (slideRef.current) {
+      const slideWidth = slideRef.current.clientWidth;
+      const newSlideIndex = Math.round(slideRef.current.scrollLeft / slideWidth);
+      setCurrentSlide(newSlideIndex);
+    }
+  };
+  
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || !slideRef.current) return;
+    
+    const x = e.touches[0].pageX - slideRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5; // Multiplicador de velocidade
+    slideRef.current.scrollLeft = scrollLeft - walk;
+  };
+  
   // Efeito para mover o carrossel quando o currentSlide mudar
   useEffect(() => {
     if (slideRef.current) {
@@ -487,10 +548,10 @@ export default function Home() {
         <div className="container">
           <div className="flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 md:pr-6 mb-8 md:mb-0">
-              <h1 className="font-montserrat font-extrabold text-3xl md:text-4xl lg:text-5xl text-[#0C0910] leading-tight mb-4">
+              <h1 className="font-sora font-extrabold text-3xl md:text-4xl lg:text-5xl text-[#0C0910] leading-tight mb-4">
                 <span className="text-primary bg-yellow-100 px-1">Venda mais</span> e transforme sua loja de materiais de construção
               </h1>
-              <h2 className="font-montserrat font-bold text-xl md:text-2xl text-[#0C0910] opacity-80 mb-6">
+              <h2 className="font-inter font-bold text-xl md:text-2xl text-[#0C0910] opacity-80 mb-6">
                 Marketing digital especializado para quem vende materiais de construção, elétricos e hidráulicos
               </h2>
               <p className="mb-8 md:pr-12">
@@ -506,7 +567,7 @@ export default function Home() {
               </Button>
             </div>
             <div className="md:w-1/2 bg-[#F6F8FF] p-6 rounded-lg shadow-md border border-gray-100">
-              <h3 className="font-montserrat font-bold text-xl text-primary mb-4">Aumente suas vendas agora</h3>
+              <h3 className="font-sora font-bold text-xl text-primary mb-4">Aumente suas vendas agora</h3>
               <p className="mb-4">Preencha o formulário abaixo para receber uma análise gratuita da sua loja:</p>
               
               <Form {...heroForm}>
@@ -694,7 +755,7 @@ export default function Home() {
         <div className="bg-[#F6F8FF] p-8 rounded-lg shadow-md">
           <div className="flex flex-col md:flex-row md:items-center">
             <div className="md:w-2/3 mb-6 md:mb-0 md:pr-8">
-              <h3 className="font-montserrat font-bold text-2xl mb-4">
+              <h3 className="font-sora font-bold text-2xl mb-4">
                 Marketing que vende, pra quem vende material
               </h3>
               <p className="mb-4">
@@ -794,8 +855,15 @@ export default function Home() {
             {/* Imagens em slide */}
             <div 
               ref={slideRef}
-              className="flex overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide"
+              className="flex overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide cursor-grab active:cursor-grabbing"
               style={{ scrollSnapType: 'x mandatory' }}
+              onMouseDown={handleMouseDown}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseUp}
+              onMouseMove={handleMouseMove}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+              onTouchMove={handleTouchMove}
             >
               <div className="flex-shrink-0 w-full snap-center px-1">
                 <img 
@@ -922,7 +990,7 @@ export default function Home() {
             </div>
             
             <div className="md:w-5/12 bg-white p-8 rounded-lg shadow-lg">
-              <h3 className="font-montserrat font-bold text-xl text-primary mb-4">
+              <h3 className="font-sora font-bold text-xl text-primary mb-4">
                 Solicite uma análise gratuita
               </h3>
               
@@ -1088,7 +1156,7 @@ export default function Home() {
             </div>
             
             <div className="mb-8 md:mb-0">
-              <h3 className="text-xl font-montserrat font-bold mb-4">Links</h3>
+              <h3 className="text-xl font-sora font-bold mb-4">Links</h3>
               <ul className="space-y-2">
                 <li>
                   <button onClick={() => scrollToTop()} className="text-gray-300 hover:text-white transition">
@@ -1114,7 +1182,7 @@ export default function Home() {
             </div>
             
             <div className="mb-8 md:mb-0">
-              <h3 className="text-xl font-montserrat font-bold mb-4">Contato</h3>
+              <h3 className="text-xl font-sora font-bold mb-4">Contato</h3>
               <ul className="space-y-2">
                 <li className="flex items-start">
                   <Mail className="h-5 w-5 text-primary mr-2 mt-0.5" />
@@ -1132,7 +1200,7 @@ export default function Home() {
             </div>
             
             <div>
-              <h3 className="text-xl font-montserrat font-bold mb-4">Newsletter</h3>
+              <h3 className="text-xl font-sora font-bold mb-4">Newsletter</h3>
               <p className="text-gray-300 mb-4">
                 Inscreva-se para receber dicas e novidades sobre marketing para lojas de materiais
               </p>
