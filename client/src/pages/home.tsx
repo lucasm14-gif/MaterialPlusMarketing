@@ -694,12 +694,12 @@ export default function Home() {
         />
         
         <div className="mt-8 max-w-6xl mx-auto">
-          {/* Carrossel de imagens */}
-          <div className="relative overflow-hidden rounded-lg shadow-lg max-w-4xl mx-auto">
+          {/* Carrossel de imagens - versão clean sem sombras */}
+          <div className="relative overflow-hidden max-w-4xl mx-auto">
             {/* Botões de navegação */}
             <button 
               onClick={prevSlide}
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow-md z-10 ml-2 transition"
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 z-10 ml-2 transition"
               aria-label="Anterior"
             >
               <ChevronLeft className="h-6 w-6 text-primary" />
@@ -707,7 +707,7 @@ export default function Home() {
             
             <button 
               onClick={nextSlide}
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow-md z-10 mr-2 transition"
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 z-10 mr-2 transition"
               aria-label="Próximo"
             >
               <ChevronRight className="h-6 w-6 text-primary" />
@@ -723,7 +723,7 @@ export default function Home() {
                 <img 
                   src="/src/assets/Component 8.png" 
                   alt="Case Tigre" 
-                  className="w-auto h-auto max-h-[400px] mx-auto rounded-lg shadow-sm object-contain"
+                  className="w-auto h-auto max-h-[400px] mx-auto object-contain"
                 />
               </div>
               
@@ -731,7 +731,7 @@ export default function Home() {
                 <img 
                   src="/src/assets/Component 9.png" 
                   alt="Case Amanco" 
-                  className="w-auto h-auto max-h-[400px] mx-auto rounded-lg shadow-sm object-contain"
+                  className="w-auto h-auto max-h-[400px] mx-auto object-contain"
                 />
               </div>
               
@@ -739,7 +739,7 @@ export default function Home() {
                 <img 
                   src="/src/assets/Component 10.png" 
                   alt="Case Vedacit" 
-                  className="w-auto h-auto max-h-[400px] mx-auto rounded-lg shadow-sm object-contain"
+                  className="w-auto h-auto max-h-[400px] mx-auto object-contain"
                 />
               </div>
               
@@ -747,7 +747,7 @@ export default function Home() {
                 <img 
                   src="/src/assets/Component 11.png" 
                   alt="Case Gerdau" 
-                  className="w-auto h-auto max-h-[400px] mx-auto rounded-lg shadow-sm object-contain"
+                  className="w-auto h-auto max-h-[400px] mx-auto object-contain"
                 />
               </div>
               
@@ -755,7 +755,7 @@ export default function Home() {
                 <img 
                   src="/src/assets/Component 12.png" 
                   alt="Case Eternit" 
-                  className="w-auto h-auto max-h-[400px] mx-auto rounded-lg shadow-sm object-contain"
+                  className="w-auto h-auto max-h-[400px] mx-auto object-contain"
                 />
               </div>
               
@@ -763,7 +763,7 @@ export default function Home() {
                 <img 
                   src="/src/assets/Component 13.png" 
                   alt="Case Votorantim" 
-                  className="w-auto h-auto max-h-[400px] mx-auto rounded-lg shadow-sm object-contain"
+                  className="w-auto h-auto max-h-[400px] mx-auto object-contain"
                 />
               </div>
             </div>
