@@ -532,10 +532,10 @@ export default function Home() {
         <div className="container relative z-10">
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-1/2 md:pr-6 mb-8 md:mb-0">
-              <div className="inline-block bg-white py-1 px-3 rounded-full text-primary font-semibold text-sm mb-6">
+              <div className="inline-block bg-white py-1 px-3 rounded-full text-primary font-semibold text-sm mb-6" role="text" aria-label="Slogan">
                 MARKETING QUE VENDE, PRA QUEM VENDE MATERIAL
               </div>
-              <h1 className="font-sora font-extrabold text-3xl md:text-4xl lg:text-5xl leading-tight mb-4">
+              <h1 className="font-sora font-extrabold text-3xl md:text-4xl lg:text-5xl leading-tight mb-4" itemProp="headline">
                 <span className="text-[#F7CB15]">Transforme</span> sua loja de materiais em um{" "}
                 <span className="bg-gradient-to-r from-[#F7CB15] to-[#F7CB15] bg-no-repeat bg-bottom bg-[length:100%_8px]">
                   ímã de clientes
