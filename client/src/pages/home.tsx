@@ -924,7 +924,7 @@ export default function Home() {
           <Testimonial
             name="Carlos Silva"
             company="Constrular Materiais, São Paulo"
-            image=""
+            image="/src/assets/Component 1.png"
             text="Depois de trabalhar com várias agências de marketing sem resultado, encontramos a Material Plus. Em 6 meses, aumentamos nosso faturamento em 63% e o Instagram passou a gerar vendas reais. A diferença é que eles realmente entendem o mercado de materiais."
             since="Cliente desde: Março/2022"
             result="+63% em vendas"
@@ -933,7 +933,7 @@ export default function Home() {
           <Testimonial
             name="Ana Oliveira"
             company="Eletrotec, Belo Horizonte"
-            image=""
+            image="/src/assets/Component 13.png"
             text="A implementação do sistema de CRM e a automação dos orçamentos transformou nossa operação. Conseguimos atender mais clientes com a mesma equipe e o Google Ads finalmente começou a dar resultado. Nosso ROI triplicou em 4 meses."
             since="Cliente desde: Janeiro/2023"
             result="+215% em leads"
