@@ -691,21 +691,21 @@ export default function Home() {
             </div>
             
             <div className="md:w-1/2 relative">
-              <div className="flex justify-center items-center pt-4">
+              <div className="flex justify-center items-center">
                 {/* Essas divs serão substituídas por imagens posteriormente */}
-                <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-red-500 -mr-3 md:-mr-4 relative z-10 flex items-center justify-center border-4 border-white overflow-hidden">
+                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full bg-red-500 -mr-6 md:-mr-10 relative z-10 flex items-center justify-center border-4 border-white overflow-hidden shadow-lg">
                   <span className="text-white">Foto 1</span>
                 </div>
-                <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-red-500 -mr-3 md:-mr-4 relative z-20 flex items-center justify-center border-4 border-white overflow-hidden">
+                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full bg-red-500 -mr-6 md:-mr-10 relative z-20 flex items-center justify-center border-4 border-white overflow-hidden shadow-lg">
                   <span className="text-white">Foto 2</span>
                 </div>
-                <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-red-500 -mr-3 md:-mr-4 relative z-30 flex items-center justify-center border-4 border-white overflow-hidden">
+                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full bg-red-500 -mr-6 md:-mr-10 relative z-30 flex items-center justify-center border-4 border-white overflow-hidden shadow-lg">
                   <span className="text-white">Foto 3</span>
                 </div>
-                <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-red-500 -mr-3 md:-mr-4 relative z-40 flex items-center justify-center border-4 border-white overflow-hidden">
+                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full bg-red-500 -mr-6 md:-mr-10 relative z-40 flex items-center justify-center border-4 border-white overflow-hidden shadow-lg">
                   <span className="text-white">Foto 4</span>
                 </div>
-                <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-red-500 relative z-50 flex items-center justify-center border-4 border-white overflow-hidden">
+                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full bg-red-500 relative z-50 flex items-center justify-center border-4 border-white overflow-hidden shadow-lg">
                   <span className="text-white">Foto 5</span>
                 </div>
               </div>
