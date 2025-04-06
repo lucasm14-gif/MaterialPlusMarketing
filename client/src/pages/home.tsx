@@ -709,9 +709,11 @@ export default function Home() {
                     <img 
                       src={url} 
                       alt={`Membro da equipe ${index + 1}`} 
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-center"
+                      width={144}
+                      height={144}
                       onError={(e) => {
-                        (e.target as HTMLImageElement).src = 'https://via.placeholder.com/150';
+                        (e.target as HTMLImageElement).src = 'https://via.placeholder.com/144';
                       }}
                     />
                   </div>
