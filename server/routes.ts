@@ -20,6 +20,35 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Store the lead
       const createdLead = await storage.createLead(lead);
+
+      // Send to Discord webhook
+      try {
+        const webhookUrl = "https://discord.com/api/webhooks/1350725470781440050/Q4et3O6OUh4cjq2a7UwZo0z6P6qJXSw52mkfAL_AOHtXArjUXM5Cseqtzx6pRGh-P5wh";
+        
+        const webhookBody = {
+          embeds: [{
+            title: "Novo Lead Recebido! 🎉",
+            color: 0x1E65DE,
+            fields: [
+              { name: "Nome", value: lead.name, inline: true },
+              { name: "WhatsApp", value: lead.whatsapp, inline: true },
+              { name: "Loja", value: lead.storeName, inline: true },
+              { name: "Email", value: lead.email || "Não informado", inline: true },
+              { name: "Cidade", value: lead.city || "Não informada", inline: true },
+              { name: "Mensagem", value: lead.message || "Não informada" }
+            ],
+            timestamp: new Date().toISOString()
+          }]
+        };
+
+        await fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(webhookBody)
+        });
+      } catch (webhookError) {
+        console.error("Error sending to Discord:", webhookError);
+      }
       
       res.status(201).json({
         message: "Lead submitted successfully",
