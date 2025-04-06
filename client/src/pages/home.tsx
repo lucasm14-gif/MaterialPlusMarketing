@@ -692,21 +692,20 @@ export default function Home() {
             
             <div className="md:w-1/2 relative">
               <div className="flex justify-center items-center">
-                {/* Essas divs serão substituídas por imagens posteriormente */}
-                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full bg-red-500 -mr-6 md:-mr-10 relative z-10 flex items-center justify-center border-4 border-white overflow-hidden shadow-lg">
-                  <span className="text-white">Foto 1</span>
+                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full -mr-6 md:-mr-10 relative z-10 border-4 border-white overflow-hidden shadow-lg">
+                  <img src="/src/assets/Component 1.png" alt="Team member" className="w-full h-full object-cover" />
                 </div>
-                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full bg-red-500 -mr-6 md:-mr-10 relative z-20 flex items-center justify-center border-4 border-white overflow-hidden shadow-lg">
-                  <span className="text-white">Foto 2</span>
+                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full -mr-6 md:-mr-10 relative z-20 border-4 border-white overflow-hidden shadow-lg">
+                  <img src="/src/assets/Component 1.png" alt="Team member" className="w-full h-full object-cover" />
                 </div>
-                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full bg-red-500 -mr-6 md:-mr-10 relative z-30 flex items-center justify-center border-4 border-white overflow-hidden shadow-lg">
-                  <span className="text-white">Foto 3</span>
+                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full -mr-6 md:-mr-10 relative z-30 border-4 border-white overflow-hidden shadow-lg">
+                  <img src="/src/assets/Component 1.png" alt="Team member" className="w-full h-full object-cover" />
                 </div>
-                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full bg-red-500 -mr-6 md:-mr-10 relative z-40 flex items-center justify-center border-4 border-white overflow-hidden shadow-lg">
-                  <span className="text-white">Foto 4</span>
+                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full -mr-6 md:-mr-10 relative z-40 border-4 border-white overflow-hidden shadow-lg">
+                  <img src="/src/assets/Component 1.png" alt="Team member" className="w-full h-full object-cover" />
                 </div>
-                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full bg-red-500 relative z-50 flex items-center justify-center border-4 border-white overflow-hidden shadow-lg">
-                  <span className="text-white">Foto 5</span>
+                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full relative z-50 border-4 border-white overflow-hidden shadow-lg">
+                  <img src="/src/assets/Component 1.png" alt="Team member" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
