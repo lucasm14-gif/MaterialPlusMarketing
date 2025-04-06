@@ -702,14 +702,14 @@ export default function Home() {
                 {teamMembers.map((url, index) => (
                   <div 
                     key={index}
-                    className={`w-40 h-40 md:w-56 md:h-56 rounded-full ${
-                      index !== teamMembers.length - 1 ? '-mr-8 md:-mr-12' : ''
+                    className={`w-24 h-24 md:w-36 md:h-36 rounded-full ${
+                      index !== teamMembers.length - 1 ? '-mr-6 md:-mr-10' : ''
                     } relative z-${index + 1}0 border-4 border-white overflow-hidden shadow-lg`}
                   >
                     <img 
                       src={url || 'https://via.placeholder.com/150'} 
                       alt={`Membro da equipe ${index + 1}`} 
-                      className="w-full h-full object-cover object-center"
+                      className="w-full h-full object-cover"
                     />
                   </div>
                 ))}
