@@ -681,31 +681,31 @@ export default function Home() {
                 que falam a linguagem do seu cliente e conhecem o seu setor.
               </p>
               <Button 
-                variant="default"
+                variant="accent" 
                 size="lg"
                 onClick={() => scrollToSection("contato")}
-                className="bg-green-500 hover:bg-green-600 text-white font-semibold px-8"
+                className="shadow-lg text-[#0C0910] bg-[#F7CB15] hover:bg-[#e8bc0c] font-bold border-b-4 border-[#d9ae08] px-8"
               >
                 Quero receber atendimento
               </Button>
             </div>
             
             <div className="md:w-1/2 relative">
-              <div className="flex justify-center">
+              <div className="flex justify-center items-center pt-4">
                 {/* Essas divs serão substituídas por imagens posteriormente */}
-                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full bg-red-500 -mr-4 md:-mr-6 relative z-10 flex items-center justify-center border-4 border-white">
+                <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-red-500 -mr-3 md:-mr-4 relative z-10 flex items-center justify-center border-4 border-white overflow-hidden">
                   <span className="text-white">Foto 1</span>
                 </div>
-                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full bg-red-500 -mr-4 md:-mr-6 relative z-20 flex items-center justify-center border-4 border-white">
+                <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-red-500 -mr-3 md:-mr-4 relative z-20 flex items-center justify-center border-4 border-white overflow-hidden">
                   <span className="text-white">Foto 2</span>
                 </div>
-                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full bg-red-500 -mr-4 md:-mr-6 relative z-30 flex items-center justify-center border-4 border-white">
+                <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-red-500 -mr-3 md:-mr-4 relative z-30 flex items-center justify-center border-4 border-white overflow-hidden">
                   <span className="text-white">Foto 3</span>
                 </div>
-                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full bg-red-500 -mr-4 md:-mr-6 relative z-40 flex items-center justify-center border-4 border-white">
+                <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-red-500 -mr-3 md:-mr-4 relative z-40 flex items-center justify-center border-4 border-white overflow-hidden">
                   <span className="text-white">Foto 4</span>
                 </div>
-                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full bg-red-500 relative z-50 flex items-center justify-center border-4 border-white">
+                <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-red-500 relative z-50 flex items-center justify-center border-4 border-white overflow-hidden">
                   <span className="text-white">Foto 5</span>
                 </div>
               </div>
