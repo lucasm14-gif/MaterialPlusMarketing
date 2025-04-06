@@ -702,7 +702,7 @@ export default function Home() {
                 {teamMembers.map((url, index) => (
                   <div 
                     key={index}
-                    className={`w-24 h-24 md:w-36 md:h-36 rounded-full ${
+                    className={`w-32 h-32 md:w-48 md:h-48 rounded-full ${
                       index !== teamMembers.length - 1 ? '-mr-6 md:-mr-10' : ''
                     } relative z-${index + 1}0 border-4 border-white overflow-hidden shadow-lg`}
                   >
