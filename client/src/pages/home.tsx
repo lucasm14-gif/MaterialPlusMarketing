@@ -336,6 +336,7 @@ export default function Home() {
   // States
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  // Team member images - Edit URLs here
   const [teamMembers] = useState([
     {
       id: 1,
@@ -363,6 +364,40 @@ export default function Home() {
       name: 'Membro 5'
     }
   ]);
+
+  // Carousel images - Edit URLs here
+  const carouselImages = [
+    {
+      id: 1,
+      src: '/src/assets/Component 8.png',
+      alt: 'Case Tigre'
+    },
+    {
+      id: 2,
+      src: '/src/assets/Component 9.png',
+      alt: 'Case Amanco'
+    },
+    {
+      id: 3,
+      src: '/src/assets/Component 10.png',
+      alt: 'Case Vedacit'
+    },
+    {
+      id: 4,
+      src: '/src/assets/Component 11.png',
+      alt: 'Case Gerdau'
+    },
+    {
+      id: 5,
+      src: '/src/assets/Component 12.png',
+      alt: 'Case Eternit'
+    },
+    {
+      id: 6,
+      src: '/src/assets/Component 13.png',
+      alt: 'Case Votorantim'
+    }
+  ];
   const slideRef = React.useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
@@ -953,59 +988,17 @@ export default function Home() {
               className="flex overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide relative"
               style={{ scrollSnapType: 'x mandatory', position: 'relative' }}
             >
-              <div className="flex-shrink-0 w-full snap-center px-1">
-                <div className="carousel-item">
-                  <img 
-                    src="/src/assets/Component 8.png" 
-                    alt="Case Tigre" 
-                    className="w-auto h-auto max-h-[400px] mx-auto object-contain"
-                  />
+              {carouselImages.map((image) => (
+                <div key={image.id} className="flex-shrink-0 w-full snap-center px-1">
+                  <div className="carousel-item">
+                    <img 
+                      src={image.src} 
+                      alt={image.alt} 
+                      className="w-auto h-auto max-h-[400px] mx-auto object-contain"
+                    />
+                  </div>
                 </div>
-              </div>
-
-              <div className="flex-shrink-0 w-full snap-center px-1">
-                <div className="carousel-item">
-                  <img 
-                    src="/src/assets/Component 9.png" 
-                    alt="Case Amanco" 
-                    className="w-auto h-auto max-h-[400px] mx-auto object-contain"
-                  />
-                </div>
-              </div>
-
-              <div className="flex-shrink-0 w-full snap-center px-1">
-                <div className="carousel-item">
-                  <img 
-                    src="/src/assets/Component 10.png" 
-                    alt="Case Vedacit" 
-                    className="w-auto h-auto max-h-[400px] mx-auto object-contain"
-                  />
-                </div>
-              </div>
-
-              <div className="flex-shrink-0 w-full snap-center px-1">
-                <img 
-                  src="/src/assets/Component 11.png" 
-                  alt="Case Gerdau" 
-                  className="w-auto h-auto max-h-[400px] mx-auto object-contain"
-                />
-              </div>
-
-              <div className="flex-shrink-0 w-full snap-center px-1">
-                <img 
-                  src="/src/assets/Component 12.png" 
-                  alt="Case Eternit" 
-                  className="w-auto h-auto max-h-[400px] mx-auto object-contain"
-                />
-              </div>
-
-              <div className="flex-shrink-0 w-full snap-center px-1">
-                <img 
-                  src="/src/assets/Component 13.png" 
-                  alt="Case Votorantim" 
-                  className="w-auto h-auto max-h-[400px] mx-auto object-contain"
-                />
-              </div>
+              ))}
             </div>
           </div>
 
