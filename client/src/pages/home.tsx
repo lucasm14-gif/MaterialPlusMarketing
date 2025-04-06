@@ -666,19 +666,50 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Clients Section */}
-      <section className="py-12 bg-white">
+      {/* Team Section */}
+      <section className="py-16 bg-white">
         <div className="container">
-          <p className="text-center text-lg mb-8">
-            Ajudamos lojistas de material de construção e elétrico por todo o Brasil
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-            <div className="text-gray-400 font-bold">CONSTRULAR</div>
-            <div className="text-gray-400 font-bold">ELETROTEC</div>
-            <div className="text-gray-400 font-bold">CONSTRUSÃO</div>
-            <div className="text-gray-400 font-bold">HIDROPLUS</div>
-            <div className="text-gray-400 font-bold">ELÉTRICA SILVA</div>
-            <div className="text-gray-400 font-bold">IRMÃOS FERRAGENS</div>
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="md:w-2/5 mb-10 md:mb-0">
+              <h2 className="font-sora font-bold text-3xl md:text-4xl text-[#0C0910] mb-4">
+                Um desses<br />especialistas vai<br />atender você
+              </h2>
+              <div className="w-24 h-1 bg-primary mb-6"></div>
+              <p className="text-gray-700 mb-8">
+                Nossa equipe é especializada no mercado de materiais de construção 
+                e entende os desafios específicos do seu negócio. Conte com profissionais 
+                que falam a linguagem do seu cliente e conhecem o seu setor.
+              </p>
+              <Button 
+                variant="default"
+                size="lg"
+                onClick={() => scrollToSection("contato")}
+                className="bg-green-500 hover:bg-green-600 text-white font-semibold px-8"
+              >
+                Quero receber atendimento
+              </Button>
+            </div>
+            
+            <div className="md:w-1/2 relative">
+              <div className="flex justify-center">
+                {/* Essas divs serão substituídas por imagens posteriormente */}
+                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full bg-red-500 -mr-4 md:-mr-6 relative z-10 flex items-center justify-center border-4 border-white">
+                  <span className="text-white">Foto 1</span>
+                </div>
+                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full bg-red-500 -mr-4 md:-mr-6 relative z-20 flex items-center justify-center border-4 border-white">
+                  <span className="text-white">Foto 2</span>
+                </div>
+                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full bg-red-500 -mr-4 md:-mr-6 relative z-30 flex items-center justify-center border-4 border-white">
+                  <span className="text-white">Foto 3</span>
+                </div>
+                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full bg-red-500 -mr-4 md:-mr-6 relative z-40 flex items-center justify-center border-4 border-white">
+                  <span className="text-white">Foto 4</span>
+                </div>
+                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full bg-red-500 relative z-50 flex items-center justify-center border-4 border-white">
+                  <span className="text-white">Foto 5</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
