@@ -336,34 +336,44 @@ export default function Home() {
   // States
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
-  // Team member images - Edit URLs here
-  const [teamMembers] = useState([
-    {
-      id: 1,
-      image: 'https://scalemidia.com.br/social-midia-porto-alegre/wp-content/uploads/2025/04/Captura-de-tela-2025-04-05-223520.png',
-      name: 'Membro 1'
-    },
-    {
-      id: 2,
-      image: 'https://scalemidia.com.br/social-midia-porto-alegre/wp-content/uploads/2025/04/Captura-de-tela-2025-04-05-223520.png',
-      name: 'Membro 2'
-    },
-    {
-      id: 3,
-      image: 'https://scalemidia.com.br/social-midia-porto-alegre/wp-content/uploads/2025/04/Captura-de-tela-2025-04-05-223520.png',
-      name: 'Membro 3'
-    },
-    {
-      id: 4,
-      image: 'https://scalemidia.com.br/social-midia-porto-alegre/wp-content/uploads/2025/04/Captura-de-tela-2025-04-05-223520.png',
-      name: 'Membro 4'
-    },
-    {
-      id: 5,
-      image: 'https://scalemidia.com.br/social-midia-porto-alegre/wp-content/uploads/2025/04/Captura-de-tela-2025-04-05-223520.png',
-      name: 'Membro 5'
+  // Easily editable image URLs
+  const [images] = useState({
+    // Team members
+    teamMembers: [
+      {
+        id: 1,
+        image: '/src/assets/team-member-1.jpg',
+        name: 'Membro 1'
+      },
+      {
+        id: 2,
+        image: '/src/assets/team-member-2.jpg',
+        name: 'Membro 2'
+      },
+      {
+        id: 3,
+        image: '/src/assets/team-member-3.jpg',
+        name: 'Membro 3'
+      },
+      {
+        id: 4,
+        image: '/src/assets/team-member-4.jpg',
+        name: 'Membro 4'
+      },
+      {
+        id: 5,
+        image: '/src/assets/team-member-5.jpg',
+        name: 'Membro 5'
+      }
+    ],
+    // Solution section image
+    solutionImage: '/src/assets/Component 1.png',
+    // Testimonial images
+    testimonials: {
+      carlos: '/src/assets/Component 1.png',
+      ana: '/src/assets/Component 13.png'
     }
-  ]);
+  });
 
   // Carousel images - Edit URLs here
   const carouselImages = [
@@ -762,7 +772,7 @@ export default function Home() {
                     } relative z-${index + 1}0 border-4 border-white overflow-hidden shadow-lg`}
                   >
                     <img 
-                      src={member.image || 'https://via.placeholder.com/150'} 
+                      src={member.image} 
                       alt={member.name} 
                       className="w-full h-full object-cover"
                     />
@@ -898,7 +908,7 @@ export default function Home() {
             </div>
             <div className="md:w-1/3">
               <img
-                src="/src/assets/Component 1.png"
+                src={images.solutionImage}
                 alt="Equipe Material Plus"
                 className="rounded-lg shadow-md w-full h-48 md:h-64 object-cover"
               />
@@ -924,7 +934,7 @@ export default function Home() {
           <Testimonial
             name="Carlos Silva"
             company="Constrular Materiais, São Paulo"
-            image="/src/assets/Component 1.png"
+            image={images.testimonials.carlos}
             text="Depois de trabalhar com várias agências de marketing sem resultado, encontramos a Material Plus. Em 6 meses, aumentamos nosso faturamento em 63% e o Instagram passou a gerar vendas reais. A diferença é que eles realmente entendem o mercado de materiais."
             since="Cliente desde: Março/2022"
             result="+63% em vendas"
@@ -933,7 +943,7 @@ export default function Home() {
           <Testimonial
             name="Ana Oliveira"
             company="Eletrotec, Belo Horizonte"
-            image="/src/assets/Component 13.png"
+            image={images.testimonials.ana}
             text="A implementação do sistema de CRM e a automação dos orçamentos transformou nossa operação. Conseguimos atender mais clientes com a mesma equipe e o Google Ads finalmente começou a dar resultado. Nosso ROI triplicou em 4 meses."
             since="Cliente desde: Janeiro/2023"
             result="+215% em leads"
