@@ -336,6 +336,13 @@ export default function Home() {
   // States
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [teamMembers] = useState([
+    'https://scalemidia.com.br/social-midia-porto-alegre/wp-content/uploads/2025/04/Captura-de-tela-2025-04-05-223520.png',
+    'https://scalemidia.com.br/social-midia-porto-alegre/wp-content/uploads/2025/04/Captura-de-tela-2025-04-05-223520.png',
+    'https://scalemidia.com.br/social-midia-porto-alegre/wp-content/uploads/2025/04/Captura-de-tela-2025-04-05-223520.png',
+    'https://scalemidia.com.br/social-midia-porto-alegre/wp-content/uploads/2025/04/Captura-de-tela-2025-04-05-223520.png',
+    'https://scalemidia.com.br/social-midia-porto-alegre/wp-content/uploads/2025/04/Captura-de-tela-2025-04-05-223520.png'
+  ]);
   const slideRef = React.useRef<HTMLDivElement>(null);
   const { toast } = useToast();
   
@@ -692,21 +699,20 @@ export default function Home() {
             
             <div className="md:w-1/2 relative">
               <div className="flex justify-center items-center">
-                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full -mr-6 md:-mr-10 relative z-10 border-4 border-white overflow-hidden shadow-lg">
-                  <img src="/src/assets/team/member1.jpg" alt="Membro da equipe 1" className="w-full h-full object-cover" />
-                </div>
-                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full -mr-6 md:-mr-10 relative z-20 border-4 border-white overflow-hidden shadow-lg">
-                  <img src="/src/assets/team/member2.jpg" alt="Membro da equipe 2" className="w-full h-full object-cover" />
-                </div>
-                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full -mr-6 md:-mr-10 relative z-30 border-4 border-white overflow-hidden shadow-lg">
-                  <img src="/src/assets/team/member3.jpg" alt="Membro da equipe 3" className="w-full h-full object-cover" />
-                </div>
-                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full -mr-6 md:-mr-10 relative z-40 border-4 border-white overflow-hidden shadow-lg">
-                  <img src="/src/assets/team/member4.jpg" alt="Membro da equipe 4" className="w-full h-full object-cover" />
-                </div>
-                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full relative z-50 border-4 border-white overflow-hidden shadow-lg">
-                  <img src="/src/assets/team/member5.jpg" alt="Membro da equipe 5" className="w-full h-full object-cover" />
-                </div>
+                {teamMembers.map((url, index) => (
+                  <div 
+                    key={index}
+                    className={`w-24 h-24 md:w-36 md:h-36 rounded-full ${
+                      index !== teamMembers.length - 1 ? '-mr-6 md:-mr-10' : ''
+                    } relative z-${index + 1}0 border-4 border-white overflow-hidden shadow-lg`}
+                  >
+                    <img 
+                      src={url || 'https://via.placeholder.com/150'} 
+                      alt={`Membro da equipe ${index + 1}`} 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
