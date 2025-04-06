@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertLeadSchema } from "@shared/schema";
+import fetch from "node-fetch";
 import { ZodError } from "zod";
 import { fromZodError } from "zod-validation-error";
 
