@@ -365,10 +365,10 @@ export default function Home() {
   ]);
   const slideRef = React.useRef<HTMLDivElement>(null);
   const { toast } = useToast();
-  
+
   // Apenas para controle do carrossel com botões
-  
-  
+
+
   // Lead Form (Hero)
   const heroForm = useForm<LeadFormData>({
     resolver: zodResolver(leadFormSchema),
@@ -440,25 +440,25 @@ export default function Home() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-  
+
   // Carrossel navigation
   const totalSlides = 6; // Total de casos/imagens no carrossel
-  
+
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
   };
-  
+
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
   };
-  
+
   // Navegar para um slide específico através dos dots
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
   };
-  
+
   // Carrossel apenas com navegação por botões
-  
+
   // Efeito para mover o carrossel quando o currentSlide mudar
   useEffect(() => {
     if (slideRef.current) {
@@ -502,7 +502,7 @@ export default function Home() {
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
-        
+
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden bg-white pb-4 container">
@@ -548,7 +548,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-        
+
         <div className="container relative z-10">
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-1/2 md:pr-6 mb-8 md:mb-0">
@@ -564,7 +564,7 @@ export default function Home() {
               <h2 className="font-inter text-xl md:text-2xl text-white/90 mb-6">
                 Marketing digital especializado para lojas de materiais de construção, elétricos e hidráulicos que <span className="font-bold">realmente traz resultados</span>
               </h2>
-              
+
               <div className="grid grid-cols-2 gap-6 mb-8">
                 <div className="flex items-center">
                   <div className="mr-3 w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
@@ -591,7 +591,7 @@ export default function Home() {
                   <span>Resultados garantidos</span>
                 </div>
               </div>
-              
+
               <Button 
                 variant="accent" 
                 size="lg"
@@ -601,7 +601,7 @@ export default function Home() {
                 Quero aumentar minhas vendas agora!
               </Button>
             </div>
-            
+
             <div className="md:w-1/2 bg-white p-8 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.2)] text-black">
               <h3 className="font-sora font-bold text-2xl text-[#0C0910] mb-2">
                 <span className="text-primary">Análise gratuita</span> da sua loja
@@ -609,7 +609,7 @@ export default function Home() {
               <p className="mb-6 text-gray-600">
                 Preencha o formulário abaixo e descubra como podemos transformar sua loja:
               </p>
-              
+
               <Form {...heroForm}>
                 <form onSubmit={heroForm.handleSubmit(onHeroFormSubmit)} className="space-y-4">
                   <FormField
@@ -629,7 +629,7 @@ export default function Home() {
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={heroForm.control}
                     name="whatsapp"
@@ -648,7 +648,7 @@ export default function Home() {
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={heroForm.control}
                     name="storeName"
@@ -666,7 +666,7 @@ export default function Home() {
                       </FormItem>
                     )}
                   />
-                  
+
                   <Button 
                     type="submit" 
                     className="w-full shadow-lg font-bold py-3 text-[#0C0910] bg-[#F7CB15] hover:bg-[#e8bc0c] border-b-4 border-[#d9ae08]"
@@ -681,7 +681,7 @@ export default function Home() {
                       "QUERO AUMENTAR MINHAS VENDAS"
                     )}
                   </Button>
-                  
+
                   <div className="flex justify-center items-center text-xs text-gray-500 mt-2">
                     <Lock className="h-3 w-3 mr-1" />
                     <span>Seus dados estão seguros e não serão compartilhados</span>
@@ -716,7 +716,7 @@ export default function Home() {
                 Quero receber atendimento
               </Button>
             </div>
-            
+
             <div className="md:w-1/2 relative">
               <div className="flex justify-center items-center">
                 {teamMembers.map((member, index) => (
@@ -745,45 +745,45 @@ export default function Home() {
           title="Problemas que todo lojista de materiais enfrenta"
           subtitle="Se você já passou por alguma dessas situações, você não está sozinho..."
         />
-        
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <ProblemCard
             icon={AlertCircle}
             title="Investimento sem retorno"
             description="Você já investiu em agências de marketing que prometeram muito, entregaram pouco e não entendiam nada do seu segmento."
           />
-          
+
           <ProblemCard
             icon={Users}
             title="Redes sociais sem estratégia"
             description="Sua loja está nas redes sociais, mas as publicações não geram engajamento, leads ou vendas reais para o seu negócio."
           />
-          
+
           <ProblemCard
             icon={DollarSign}
             title="Campanhas caras e ineficientes"
             description="Anúncios no Google e Facebook que drenam seu orçamento mas não trazem os clientes certos para o seu estabelecimento."
           />
-          
+
           <ProblemCard
             icon={Target}
             title="Concorrência digital crescente"
             description="Lojas concorrentes estão dominando as buscas no Google, enquanto sua empresa é pouco encontrada por clientes em potencial."
           />
-          
+
           <ProblemCard
             icon={AlertCircle}
             title="Falta de controle e métricas"
             description="Você não consegue medir com precisão o retorno do seu investimento em marketing e não sabe o que está funcionando."
           />
-          
+
           <ProblemCard
             icon={MessageSquare}
             title="Dificuldade em acompanhar leads"
             description="Mensagens de clientes se perdem, orçamentos demoram para ser enviados e vendas potenciais escapam por falta de organização."
           />
         </div>
-        
+
         <div className="mt-12 text-center">
           <p className="font-semibold text-lg mb-4">
             Não deixe esses problemas continuarem afetando seu negócio
@@ -804,45 +804,45 @@ export default function Home() {
           title="A solução ideal para lojistas de materiais"
           subtitle="Marketing digital especializado que realmente entende o seu mercado e gera resultados mensuráveis"
         />
-        
+
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-16">
           <IconItem
             icon={Target}
             title="Estratégia personalizada para materiais"
             description="Desenvolvemos um plano de marketing exclusivo que considera as peculiaridades do mercado de materiais de construção, elétricos e hidráulicos. Entendemos seu cliente e suas necessidades."
           />
-          
+
           <IconItem
             icon={ArrowUp}
             title="Tráfego pago que converte"
             description="Criamos campanhas no Google e Meta que trazem clientes realmente interessados em comprar. Focamos nas palavras-chave certas e no público que realmente importa para o seu negócio."
           />
-          
+
           <IconItem
             icon={UserCheck}
             title="Automação com CRM especializado"
             description="Implementamos sistemas que automatizam o acompanhamento de leads, facilita a emissão de orçamentos e garante que nenhuma oportunidade de venda se perca. Integramos com seus sistemas atuais."
           />
-          
+
           <IconItem
             icon={ArrowRight}
             title="Social Media com estratégia"
             description="Não apenas publicamos conteúdo; criamos estratégias que transformam suas redes sociais em canais de vendas. Produzimos conteúdo técnico, confiável e que reforça a autoridade da sua loja."
           />
-          
+
           <IconItem
             icon={CheckCircle}
             title="Relatórios de desempenho reais"
             description="Acompanhe o resultado do seu investimento com relatórios claros e objetivos. Métricas que realmente importam: vendas, leads, ROI e crescimento do seu negócio."
           />
-          
+
           <IconItem
             icon={Users}
             title="Acompanhamento consultivo"
             description="Reuniões periódicas com nossa equipe para analisar resultados e ajustar estratégias. Uma parceria real focada no crescimento contínuo do seu negócio."
           />
         </div>
-        
+
         <div className="bg-[#F6F8FF] p-8 rounded-lg shadow-md">
           <div className="flex flex-col md:flex-row md:items-center">
             <div className="md:w-2/3 mb-6 md:mb-0 md:pr-8">
@@ -862,7 +862,11 @@ export default function Home() {
               </Button>
             </div>
             <div className="md:w-1/3">
-              <div className="bg-gray-300 rounded-lg shadow-md w-full h-48 md:h-64"></div>
+              <img
+                src="/src/assets/Component 1.png"
+                alt="Equipe Material Plus"
+                className="rounded-lg shadow-md w-full h-48 md:h-64 object-cover"
+              />
             </div>
           </div>
         </div>
@@ -874,13 +878,13 @@ export default function Home() {
           title="Resultados reais para lojistas como você"
           subtitle="Veja como temos transformado o marketing digital de lojas de materiais por todo o Brasil"
         />
-        
+
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           <StatCard value="+147%" label="Aumento médio no faturamento das lojas" />
           <StatCard value="+283%" label="Mais leads qualificados a cada mês" />
           <StatCard value="68%" label="Redução no custo de aquisição por cliente" />
         </div>
-        
+
         <div className="grid md:grid-cols-2 gap-8">
           <Testimonial
             name="Carlos Silva"
@@ -890,7 +894,7 @@ export default function Home() {
             since="Cliente desde: Março/2022"
             result="+63% em vendas"
           />
-          
+
           <Testimonial
             name="Ana Oliveira"
             company="Eletrotec, Belo Horizonte"
@@ -900,7 +904,7 @@ export default function Home() {
             result="+215% em leads"
           />
         </div>
-        
+
         <div className="mt-12 text-center">
           <p className="font-semibold text-lg mb-4">
             Quer resultados como estes para sua loja?
@@ -922,7 +926,7 @@ export default function Home() {
           title="Inspirado nas melhores práticas do mercado"
           subtitle="Marketing digital exclusivo para lojas de materiais de construção e elétricos"
         />
-        
+
         <div className="mt-8 max-w-6xl mx-auto">
           {/* Carrossel de imagens - versão clean sem sombras */}
           <div className="relative overflow-hidden max-w-4xl mx-auto">
@@ -934,7 +938,7 @@ export default function Home() {
             >
               <ChevronLeft className="h-6 w-6 text-primary" />
             </button>
-            
+
             <button 
               onClick={nextSlide}
               className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white hover:shadow-md rounded-full p-2 z-10 mr-2 transition border border-primary/20 hover:border-primary/50"
@@ -942,7 +946,7 @@ export default function Home() {
             >
               <ChevronRight className="h-6 w-6 text-primary" />
             </button>
-            
+
             {/* Imagens em slide - apenas navegação com botões */}
             <div 
               ref={slideRef}
@@ -958,7 +962,7 @@ export default function Home() {
                   />
                 </div>
               </div>
-              
+
               <div className="flex-shrink-0 w-full snap-center px-1">
                 <div className="carousel-item">
                   <img 
@@ -968,7 +972,7 @@ export default function Home() {
                   />
                 </div>
               </div>
-              
+
               <div className="flex-shrink-0 w-full snap-center px-1">
                 <div className="carousel-item">
                   <img 
@@ -978,7 +982,7 @@ export default function Home() {
                   />
                 </div>
               </div>
-              
+
               <div className="flex-shrink-0 w-full snap-center px-1">
                 <img 
                   src="/src/assets/Component 11.png" 
@@ -986,7 +990,7 @@ export default function Home() {
                   className="w-auto h-auto max-h-[400px] mx-auto object-contain"
                 />
               </div>
-              
+
               <div className="flex-shrink-0 w-full snap-center px-1">
                 <img 
                   src="/src/assets/Component 12.png" 
@@ -994,7 +998,7 @@ export default function Home() {
                   className="w-auto h-auto max-h-[400px] mx-auto object-contain"
                 />
               </div>
-              
+
               <div className="flex-shrink-0 w-full snap-center px-1">
                 <img 
                   src="/src/assets/Component 13.png" 
@@ -1004,7 +1008,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          
+
           {/* Indicator dots */}
           <div className="flex justify-center space-x-3 mt-6">
             {[...Array(totalSlides)].map((_, index) => (
@@ -1027,30 +1031,30 @@ export default function Home() {
           title="Como trabalhamos"
           subtitle="Um processo simples para transformar sua presença digital e aumentar suas vendas"
         />
-        
+
         <div className="relative">
           {/* Progress line */}
           <div className="hidden md:block absolute top-32 left-0 right-0 h-1 bg-gray-200 z-0"></div>
-          
+
           <div className="grid md:grid-cols-4 gap-8">
             <ProcessStep
               number={1}
               title="Diagnóstico"
               description="Analisamos sua loja, mercado e concorrência para identificar oportunidades de crescimento."
             />
-            
+
             <ProcessStep
               number={2}
               title="Estratégia"
               description="Criamos um plano personalizado baseado nos objetivos e nas peculiaridades do seu negócio."
             />
-            
+
             <ProcessStep
               number={3}
               title="Implementação"
               description="Colocamos o plano em prática, com campanhas, conteúdo e automações que geram resultado."
             />
-            
+
             <ProcessStep
               number={4}
               title="Crescimento"
@@ -1078,12 +1082,12 @@ export default function Home() {
                 <FeatureItem text="Equipe especializada no mercado de materiais" />
               </div>
             </div>
-            
+
             <div className="md:w-5/12 bg-white p-8 rounded-lg shadow-lg">
               <h3 className="font-sora font-bold text-xl text-primary mb-4">
                 Solicite uma análise gratuita
               </h3>
-              
+
               <Form {...contactForm}>
                 <form onSubmit={contactForm.handleSubmit(onContactFormSubmit)} className="space-y-4">
                   <FormField
@@ -1099,7 +1103,7 @@ export default function Home() {
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={contactForm.control}
                     name="whatsapp"
@@ -1113,7 +1117,7 @@ export default function Home() {
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={contactForm.control}
                     name="email"
@@ -1127,7 +1131,7 @@ export default function Home() {
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={contactForm.control}
                     name="storeName"
@@ -1141,7 +1145,7 @@ export default function Home() {
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={contactForm.control}
                     name="city"
@@ -1155,7 +1159,7 @@ export default function Home() {
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={contactForm.control}
                     name="message"
@@ -1169,7 +1173,7 @@ export default function Home() {
                       </FormItem>
                     )}
                   />
-                  
+
                   <Button 
                     type="submit" 
                     variant="accent"
@@ -1194,28 +1198,28 @@ export default function Home() {
           title="Perguntas Frequentes"
           subtitle="Tire suas dúvidas sobre nossos serviços"
         />
-        
+
         <div className="max-w-3xl mx-auto space-y-4">
           <FAQItem
             question="Quanto tempo leva para ver resultados?"
             answer="Nossos clientes costumam ver melhorias significativas em 30 a 60 dias. Tráfego e leads começam a aumentar já no primeiro mês, e o impacto nas vendas geralmente se torna evidente a partir do segundo mês, dependendo do ciclo de compra do seu cliente."
           />
-          
+
           <FAQItem
             question="Como vocês se diferenciam de outras agências?"
             answer="Somos especializados exclusivamente no mercado de materiais de construção, elétricos e hidráulicos. Nossa equipe entende as peculiaridades do setor, o comportamento do cliente e as melhores estratégias para esse mercado específico. Além disso, nosso foco é em resultados mensuráveis, não apenas em métricas de vaidade."
           />
-          
+
           <FAQItem
             question="Qual o investimento necessário?"
             answer="Trabalhamos com planos personalizados que se adequam ao tamanho da sua loja e aos seus objetivos. Nossos investimentos iniciam em R$1.997/mês para lojas de pequeno porte e podem chegar a R$7.997/mês para redes com múltiplas unidades. Cada plano é customizado após uma análise detalhada das necessidades do cliente."
           />
-          
+
           <FAQItem
             question="Como funcionam os relatórios e métricas?"
             answer="Disponibilizamos um dashboard personalizado onde você pode acompanhar em tempo real os principais KPIs: tráfego, leads, conversões, custo por aquisição e ROI. Além disso, realizamos reuniões mensais para análise aprofundada dos resultados e ajustes de estratégia."
           />
-          
+
           <FAQItem
             question="Vocês trabalham com contratos de fidelidade?"
             answer="Trabalhamos com contratos iniciais de 3 meses, pois este é o tempo mínimo para implementar a estratégia e começar a ver resultados consistentes. Após este período, o contrato se renova automaticamente mensal, mas pode ser cancelado com 30 dias de antecedência. Acreditamos que nossos resultados serão o melhor motivo para você continuar conosco."
@@ -1244,7 +1248,7 @@ export default function Home() {
                 </a>
               </div>
             </div>
-            
+
             <div className="md:col-span-1">
               <h3 className="text-xl font-sora font-bold mb-5">Links</h3>
               <ul className="space-y-3">
@@ -1274,7 +1278,7 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-            
+
             <div className="md:col-span-1">
               <h3 className="text-xl font-sora font-bold mb-5">Contato</h3>
               <ul className="space-y-3">
@@ -1287,7 +1291,7 @@ export default function Home() {
                   <span className="text-gray-300">(51) 91088-005</span>
                 </li>
               </ul>
-              
+
               <div className="mt-8">
                 <h3 className="text-xl font-sora font-bold mb-4">Newsletter</h3>
                 <p className="text-gray-300 mb-4">
@@ -1306,9 +1310,9 @@ export default function Home() {
               </div>
             </div>
           </div>
-          
+
           <Separator className="bg-gray-700 my-8" />
-          
+
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
               &copy; {new Date().getFullYear()} Material Plus. Todos os direitos reservados.
