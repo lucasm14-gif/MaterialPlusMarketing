@@ -198,11 +198,11 @@ const Testimonial = ({ name, company, image, text, since, result }: TestimonialP
   >
     <div className="flex items-center mb-4">
       <motion.div 
-        className="w-16 h-16 bg-gray-200 rounded-full overflow-hidden mr-4"
+        className="w-16 h-16 rounded-full overflow-hidden mr-4 border-2 border-primary"
         whileHover={{ scale: 1.1 }}
         transition={{ type: "spring", stiffness: 300 }}
       >
-        <div className="w-full h-full bg-gray-300"></div>
+        <img src={image} alt={name} className="w-full h-full object-cover" />
       </motion.div>
       <div>
         <h4 className="font-montserrat font-bold text-lg">{name}</h4>
