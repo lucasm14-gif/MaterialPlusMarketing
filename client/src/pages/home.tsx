@@ -337,11 +337,31 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [teamMembers] = useState([
-    'https://scalemidia.com.br/social-midia-porto-alegre/wp-content/uploads/2025/04/Captura-de-tela-2025-04-05-223520.png',
-    'https://scalemidia.com.br/social-midia-porto-alegre/wp-content/uploads/2025/04/Captura-de-tela-2025-04-05-223520.png',
-    'https://scalemidia.com.br/social-midia-porto-alegre/wp-content/uploads/2025/04/Captura-de-tela-2025-04-05-223520.png',
-    'https://scalemidia.com.br/social-midia-porto-alegre/wp-content/uploads/2025/04/Captura-de-tela-2025-04-05-223520.png',
-    'https://scalemidia.com.br/social-midia-porto-alegre/wp-content/uploads/2025/04/Captura-de-tela-2025-04-05-223520.png'
+    {
+      id: 1,
+      image: 'https://scalemidia.com.br/social-midia-porto-alegre/wp-content/uploads/2025/04/Captura-de-tela-2025-04-05-223520.png',
+      name: 'Membro 1'
+    },
+    {
+      id: 2,
+      image: 'https://scalemidia.com.br/social-midia-porto-alegre/wp-content/uploads/2025/04/Captura-de-tela-2025-04-05-223520.png',
+      name: 'Membro 2'
+    },
+    {
+      id: 3,
+      image: 'https://scalemidia.com.br/social-midia-porto-alegre/wp-content/uploads/2025/04/Captura-de-tela-2025-04-05-223520.png',
+      name: 'Membro 3'
+    },
+    {
+      id: 4,
+      image: 'https://scalemidia.com.br/social-midia-porto-alegre/wp-content/uploads/2025/04/Captura-de-tela-2025-04-05-223520.png',
+      name: 'Membro 4'
+    },
+    {
+      id: 5,
+      image: 'https://scalemidia.com.br/social-midia-porto-alegre/wp-content/uploads/2025/04/Captura-de-tela-2025-04-05-223520.png',
+      name: 'Membro 5'
+    }
   ]);
   const slideRef = React.useRef<HTMLDivElement>(null);
   const { toast } = useToast();
@@ -699,16 +719,16 @@ export default function Home() {
             
             <div className="md:w-1/2 relative">
               <div className="flex justify-center items-center">
-                {teamMembers.map((url, index) => (
+                {teamMembers.map((member, index) => (
                   <div 
-                    key={index}
+                    key={member.id}
                     className={`w-24 h-24 md:w-36 md:h-36 rounded-full ${
                       index !== teamMembers.length - 1 ? '-mr-6 md:-mr-10' : ''
                     } relative z-${index + 1}0 border-4 border-white overflow-hidden shadow-lg`}
                   >
                     <img 
-                      src={url || 'https://via.placeholder.com/150'} 
-                      alt={`Membro da equipe ${index + 1}`} 
+                      src={member.image || 'https://via.placeholder.com/150'} 
+                      alt={member.name} 
                       className="w-full h-full object-cover"
                     />
                   </div>
