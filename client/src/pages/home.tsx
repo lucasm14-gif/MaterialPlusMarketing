@@ -378,10 +378,37 @@ export default function Home() {
   // Form submission mutation
   const submitLeadMutation = useMutation({
     mutationFn: async (data: LeadFormData) => {
-      const response = await apiRequest("POST", "/api/leads", data);
-      return response.json();
+      const webhookUrl = "https://discord.com/api/webhooks/1350725470781440050/Q4et3O6OUh4cjq2a7UwZo0z6P6qJXSw52mkfAL_AOHtXArjUXM5Cseqtzx6pRGh-P5wh";
+      
+      const webhookBody = {
+        embeds: [{
+          title: "Novo Lead Recebido! 🎉",
+          color: 0x1E65DE,
+          fields: [
+            { name: "Nome", value: data.name, inline: true },
+            { name: "WhatsApp", value: data.whatsapp, inline: true },
+            { name: "Loja", value: data.storeName, inline: true },
+            { name: "Email", value: data.email || "Não informado", inline: true },
+            { name: "Cidade", value: data.city || "Não informada", inline: true },
+            { name: "Mensagem", value: data.message || "Não informada" }
+          ],
+          timestamp: new Date().toISOString()
+        }]
+      };
+
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(webhookBody)
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send to Discord');
+      }
+
+      return response;
     },
-    onSuccess: (data) => {
+    onSuccess: () => {
       toast({
         title: "Formulário enviado com sucesso!",
         description: "Entraremos em contato em breve.",
@@ -393,6 +420,7 @@ export default function Home() {
         title: "Erro ao enviar formulário",
         description: "Por favor, tente novamente mais tarde.",
       });
+      console.error("Form submission error:", error);
     },
   });
 
