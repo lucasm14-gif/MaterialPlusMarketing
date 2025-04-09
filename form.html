@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise gratuita da sua loja</title>
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Análise gratuita da sua loja</h2>
+        <form id="leadForm">
+            <div class="form-group">
+                <label for="name">Nome*</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="whatsapp">WhatsApp*</label>
+                <input type="tel" id="whatsapp" name="whatsapp" required>
+            </div>
+            <div class="form-group">
+                <label for="storeName">Nome da Loja*</label>
+                <input type="text" id="storeName" name="storeName" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="city">Cidade</label>
+                <input type="text" id="city" name="city">
+            </div>
+            <div class="form-group">
+                <label for="message">Mensagem</label>
+                <textarea id="message" name="message" rows="4"></textarea>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('leadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const webhookUrl = 'https://discord.com/api/webhooks/1350725470781440050/Q4et3O6OUh4cjq2a7UwZo0z6P6qJXSw52mkfAL_AOHtXArjUXM5Cseqtzx6pRGh-P5wh';
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                whatsapp: document.getElementById('whatsapp').value,
+                storeName: document.getElementById('storeName').value,
+                email: document.getElementById('email').value || 'Não informado',
+                city: document.getElementById('city').value || 'Não informada',
+                message: document.getElementById('message').value || 'Não informada'
+            };
+
+            const webhookBody = {
+                embeds: [{
+                    title: "Novo Lead Recebido! 🎉",
+                    color: 0x1E65DE,
+                    fields: [
+                        { name: "Nome", value: formData.name, inline: true },
+                        { name: "WhatsApp", value: formData.whatsapp, inline: true },
+                        { name: "Loja", value: formData.storeName, inline: true },
+                        { name: "Email", value: formData.email, inline: true },
+                        { name: "Cidade", value: formData.city, inline: true },
+                        { name: "Mensagem", value: formData.message }
+                    ],
+                    timestamp: new Date().toISOString()
+                }]
+            };
+
+            try {
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(webhookBody)
+                });
+
+                if (response.ok) {
+                    alert('Formulário enviado com sucesso!');
+                    document.getElementById('leadForm').reset();
+                } else {
+                    throw new Error('Falha ao enviar');
+                }
+            } catch (error) {
+                alert('Erro ao enviar o formulário. Por favor, tente novamente.');
+                console.error('Erro:', error);
+            }
+        });
+    </script>
+</body>
+</html>
