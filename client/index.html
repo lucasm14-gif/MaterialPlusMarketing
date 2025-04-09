@@ -1,144 +1,44 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
     <title>Material Plus | Marketing Digital para Lojistas de Material de Construção</title>
+    <meta name="description" content="Marketing digital especializado para lojistas de material de construção, elétrico e hidráulico. Aumente suas vendas em até 147% com estratégias comprovadas. ✓ Resultados garantidos ✓ Especialistas no setor ✓ Atendimento personalizado">
+    <meta name="keywords" content="marketing digital materiais de construção, marketing loja de material de construção, marketing digital material elétrico, marketing digital material hidráulico, agência especializada materiais construção">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Material Plus | Marketing Digital para Lojistas de Material de Construção">
+    <meta property="og:description" content="Marketing digital especializado para lojistas de material de construção, elétrico e hidráulico. Aumente suas vendas em até 147% com estratégias comprovadas.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Material Plus | Marketing Digital para Lojistas de Material de Construção">
+    <meta name="twitter:description" content="Marketing digital especializado para lojistas de material de construção. Aumente suas vendas em até 147% com estratégias comprovadas.">
+    <link rel="canonical" href="https://materialplus.com.br">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        .form-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        button {
-            background-color: #F7CB15;
-            color: #0C0910;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            width: 100%;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #e8bc0c;
-        }
-        .success-message {
-            color: green;
-            text-align: center;
-            display: none;
-            margin-top: 10px;
-        }
+      :root {
+        --font-montserrat: 'Montserrat', sans-serif;
+        --font-inter: 'Inter', sans-serif;
+        --font-sora: 'Sora', sans-serif;
+      }
+      
+      body {
+        font-family: var(--font-inter);
+      }
+      
+      .font-montserrat {
+        font-family: var(--font-montserrat);
+      }
+      
+      .font-sora {
+        font-family: var(--font-sora);
+      }
     </style>
-</head>
-<body>
-    <div class="form-container">
-        <h2>Análise gratuita da sua loja</h2>
-        <p>Preencha o formulário abaixo e descubra como podemos transformar sua loja:</p>
-        
-        <form id="leadForm">
-            <div class="form-group">
-                <label for="name">Nome completo</label>
-                <input type="text" id="name" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="whatsapp">WhatsApp</label>
-                <input type="tel" id="whatsapp" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="storeName">Nome da loja</label>
-                <input type="text" id="storeName" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="email">E-mail</label>
-                <input type="email" id="email">
-            </div>
-            
-            <div class="form-group">
-                <label for="city">Cidade</label>
-                <input type="text" id="city">
-            </div>
-            
-            <div class="form-group">
-                <label for="message">O que você espera do marketing digital?</label>
-                <textarea id="message" rows="3"></textarea>
-            </div>
-            
-            <button type="submit">SOLICITAR ANÁLISE GRATUITA</button>
-        </form>
-        <div id="successMessage" class="success-message">
-            Formulário enviado com sucesso! Entraremos em contato em breve.
-        </div>
-    </div>
-
-    <script>
-        document.getElementById('leadForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const webhookUrl = 'https://discord.com/api/webhooks/1350725470781440050/Q4et3O6OUh4cjq2a7UwZo0z6P6qJXSw52mkfAL_AOHtXArjUXM5Cseqtzx6pRGh-P5wh';
-            
-            const data = {
-                embeds: [{
-                    title: "Novo Lead Recebido! 🎉",
-                    color: 0x1E65DE,
-                    fields: [
-                        { name: "Nome", value: document.getElementById('name').value, inline: true },
-                        { name: "WhatsApp", value: document.getElementById('whatsapp').value, inline: true },
-                        { name: "Loja", value: document.getElementById('storeName').value, inline: true },
-                        { name: "Email", value: document.getElementById('email').value || "Não informado", inline: true },
-                        { name: "Cidade", value: document.getElementById('city').value || "Não informada", inline: true },
-                        { name: "Mensagem", value: document.getElementById('message').value || "Não informada" }
-                    ],
-                    timestamp: new Date().toISOString()
-                }]
-            };
-
-            try {
-                const response = await fetch(webhookUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-
-                if (response.ok) {
-                    document.getElementById('successMessage').style.display = 'block';
-                    document.getElementById('leadForm').reset();
-                } else {
-                    alert('Erro ao enviar formulário. Por favor, tente novamente.');
-                }
-            } catch (error) {
-                alert('Erro ao enviar formulário. Por favor, tente novamente.');
-            }
-        });
-    </script>
-</body>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
