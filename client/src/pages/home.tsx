@@ -378,32 +378,14 @@ export default function Home() {
   // Form submission mutation
   const submitLeadMutation = useMutation({
     mutationFn: async (data: LeadFormData) => {
-      const webhookUrl = "https://discord.com/api/webhooks/1350725470781440050/Q4et3O6OUh4cjq2a7UwZo0z6P6qJXSw52mkfAL_AOHtXArjUXM5Cseqtzx6pRGh-P5wh";
-      
-      const webhookBody = {
-        embeds: [{
-          title: "Novo Lead Recebido! 🎉",
-          color: 0x1E65DE,
-          fields: [
-            { name: "Nome", value: data.name, inline: true },
-            { name: "WhatsApp", value: data.whatsapp, inline: true },
-            { name: "Loja", value: data.storeName, inline: true },
-            { name: "Email", value: data.email || "Não informado", inline: true },
-            { name: "Cidade", value: data.city || "Não informada", inline: true },
-            { name: "Mensagem", value: data.message || "Não informada" }
-          ],
-          timestamp: new Date().toISOString()
-        }]
-      };
-
-      const response = await fetch(webhookUrl, {
+      const response = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(webhookBody)
+        body: JSON.stringify(data)
       });
 
       if (!response.ok) {
-        throw new Error('Failed to send to Discord');
+        throw new Error('Failed to submit lead');
       }
 
       return response;
