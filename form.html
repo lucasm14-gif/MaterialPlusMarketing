@@ -36,6 +36,10 @@
         button:hover {
             background-color: #45a049;
         }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -67,6 +71,7 @@
                 <textarea id="message" name="message" rows="4"></textarea>
             </div>
             <button type="submit">Enviar</button>
+            <div id="statusMessage"></div>
         </form>
     </div>
 
@@ -75,6 +80,7 @@
             e.preventDefault();
             
             const webhookUrl = 'https://discord.com/api/webhooks/1350725470781440050/Q4et3O6OUh4cjq2a7UwZo0z6P6qJXSw52mkfAL_AOHtXArjUXM5Cseqtzx6pRGh-P5wh';
+            const statusMessage = document.getElementById('statusMessage');
             
             const formData = {
                 name: document.getElementById('name').value,
@@ -86,8 +92,9 @@
             };
 
             const webhookBody = {
+                content: "📝 **Novo Lead Recebido!**",
                 embeds: [{
-                    title: "Novo Lead Recebido! 🎉",
+                    title: "Detalhes do Lead",
                     color: 0x1E65DE,
                     fields: [
                         { name: "Nome", value: formData.name, inline: true },
@@ -104,18 +111,22 @@
             try {
                 const response = await fetch(webhookUrl, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
                     body: JSON.stringify(webhookBody)
                 });
 
                 if (response.ok) {
-                    alert('Formulário enviado com sucesso!');
+                    statusMessage.style.color = 'green';
+                    statusMessage.textContent = 'Formulário enviado com sucesso!';
                     document.getElementById('leadForm').reset();
                 } else {
-                    throw new Error('Falha ao enviar');
+                    throw new Error(`Erro ${response.status}: ${response.statusText}`);
                 }
             } catch (error) {
-                alert('Erro ao enviar o formulário. Por favor, tente novamente.');
+                statusMessage.style.color = 'red';
+                statusMessage.textContent = 'Erro ao enviar o formulário. Por favor, tente novamente.';
                 console.error('Erro:', error);
             }
         });
