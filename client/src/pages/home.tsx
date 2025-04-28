@@ -354,11 +354,11 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [teamMembers] = useState([
-    'https://brindideias.com.br/wp/wp-content/uploads/2025/04/time-material-plus.jpg',
-    'https://brindideias.com.br/wp/wp-content/uploads/2025/04/1.jpg',
-    'https://brindideias.com.br/wp/wp-content/uploads/2025/04/2.jpg',
-    'https://brindideias.com.br/wp/wp-content/uploads/2025/04/3.jpg',
-    'https://brindideias.com.br/wp/wp-content/uploads/2025/04/4.jpg'
+    '/team1.jpg',
+    '/team2.jpg',
+    '/team3.jpg',
+    '/team4.jpg',
+    '/team5.jpg'
   ]);
   const slideRef = React.useRef<HTMLDivElement>(null);
   const { toast } = useToast();
