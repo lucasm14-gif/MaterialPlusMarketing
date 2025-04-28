@@ -200,11 +200,26 @@ const Testimonial = ({ name, company, image, text, since, result }: TestimonialP
   >
     <div className="flex items-center mb-4">
       <motion.div 
-        className="w-16 h-16 bg-gray-200 rounded-full overflow-hidden mr-4"
+        className="w-16 h-16 rounded-full overflow-hidden mr-4 border-2 border-primary/10"
         whileHover={{ scale: 1.1 }}
         transition={{ type: "spring", stiffness: 300 }}
       >
-        <div className="w-full h-full bg-gray-300"></div>
+        {image ? (
+          <img 
+            src={image} 
+            alt={name} 
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = 'https://via.placeholder.com/64';
+            }}
+          />
+        ) : (
+          <div className="w-full h-full bg-gray-200 flex items-center justify-center text-gray-400">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+          </div>
+        )}
       </motion.div>
       <div>
         <h4 className="font-montserrat font-bold text-lg">{name}</h4>
@@ -884,7 +899,7 @@ export default function Home() {
           <Testimonial
             name="Carlos Silva"
             company="Constrular Materiais, São Paulo"
-            image=""
+            image="https://brindideias.com.br/wp/wp-content/uploads/2025/04/cliente-plus-m.png"
             text="Depois de trabalhar com várias agências de marketing sem resultado, encontramos a Material Plus. Em 6 meses, aumentamos nosso faturamento em 63% e o Instagram passou a gerar vendas reais. A diferença é que eles realmente entendem o mercado de materiais."
             since="Cliente desde: Março/2022"
             result="+63% em vendas"
@@ -893,7 +908,7 @@ export default function Home() {
           <Testimonial
             name="Ana Oliveira"
             company="Eletrotec, Belo Horizonte"
-            image=""
+            image="https://brindideias.com.br/wp/wp-content/uploads/2025/04/material-plus-cliente.png"
             text="A implementação do sistema de CRM e a automação dos orçamentos transformou nossa operação. Conseguimos atender mais clientes com a mesma equipe e o Google Ads finalmente começou a dar resultado. Nosso ROI triplicou em 4 meses."
             since="Cliente desde: Janeiro/2023"
             result="+215% em leads"
