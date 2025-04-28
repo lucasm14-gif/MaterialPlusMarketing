@@ -966,9 +966,12 @@ export default function Home() {
               <div className="flex-shrink-0 w-full snap-center px-1">
                 <div className="carousel-item">
                   <img 
-                    src="/src/assets/Component 8.png" 
+                    src="https://brindideias.com.br/wp/wp-content/uploads/2025/04/Component-8.png" 
                     alt="Case Tigre" 
                     className="w-auto h-auto max-h-[400px] mx-auto object-contain"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://via.placeholder.com/800x400?text=Imagem+não+disponível';
+                    }}
                   />
                 </div>
               </div>
@@ -976,9 +979,12 @@ export default function Home() {
               <div className="flex-shrink-0 w-full snap-center px-1">
                 <div className="carousel-item">
                   <img 
-                    src="/src/assets/Component 9.png" 
+                    src="https://brindideias.com.br/wp/wp-content/uploads/2025/04/Component-9.png" 
                     alt="Case Amanco" 
                     className="w-auto h-auto max-h-[400px] mx-auto object-contain"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://via.placeholder.com/800x400?text=Imagem+não+disponível';
+                    }}
                   />
                 </div>
               </div>
@@ -986,35 +992,53 @@ export default function Home() {
               <div className="flex-shrink-0 w-full snap-center px-1">
                 <div className="carousel-item">
                   <img 
-                    src="/src/assets/Component 10.png" 
+                    src="https://brindideias.com.br/wp/wp-content/uploads/2025/04/Component-10.png" 
                     alt="Case Vedacit" 
                     className="w-auto h-auto max-h-[400px] mx-auto object-contain"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://via.placeholder.com/800x400?text=Imagem+não+disponível';
+                    }}
                   />
                 </div>
               </div>
               
               <div className="flex-shrink-0 w-full snap-center px-1">
-                <img 
-                  src="/src/assets/Component 11.png" 
-                  alt="Case Gerdau" 
-                  className="w-auto h-auto max-h-[400px] mx-auto object-contain"
-                />
+                <div className="carousel-item">
+                  <img 
+                    src="https://brindideias.com.br/wp/wp-content/uploads/2025/04/Component-11.png" 
+                    alt="Case Gerdau" 
+                    className="w-auto h-auto max-h-[400px] mx-auto object-contain"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://via.placeholder.com/800x400?text=Imagem+não+disponível';
+                    }}
+                  />
+                </div>
               </div>
               
               <div className="flex-shrink-0 w-full snap-center px-1">
-                <img 
-                  src="/src/assets/Component 12.png" 
-                  alt="Case Eternit" 
-                  className="w-auto h-auto max-h-[400px] mx-auto object-contain"
-                />
+                <div className="carousel-item">
+                  <img 
+                    src="https://brindideias.com.br/wp/wp-content/uploads/2025/04/Component-12.png" 
+                    alt="Case Eternit" 
+                    className="w-auto h-auto max-h-[400px] mx-auto object-contain"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://via.placeholder.com/800x400?text=Imagem+não+disponível';
+                    }}
+                  />
+                </div>
               </div>
               
               <div className="flex-shrink-0 w-full snap-center px-1">
-                <img 
-                  src="/src/assets/Component 13.png" 
-                  alt="Case Votorantim" 
-                  className="w-auto h-auto max-h-[400px] mx-auto object-contain"
-                />
+                <div className="carousel-item">
+                  <img 
+                    src="https://brindideias.com.br/wp/wp-content/uploads/2025/04/Component-13.png" 
+                    alt="Case Votorantim" 
+                    className="w-auto h-auto max-h-[400px] mx-auto object-contain"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://via.placeholder.com/800x400?text=Imagem+não+disponível';
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </div>
