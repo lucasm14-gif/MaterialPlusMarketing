@@ -354,11 +354,11 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [teamMembers] = useState([
-    '/team1.jpg',
-    '/team2.jpg',
-    '/team3.jpg',
-    '/team4.jpg',
-    '/team5.jpg'
+    'https://brindideias.com.br/wp/wp-content/uploads/2025/04/time-material-plus.jpg',
+    'https://brindideias.com.br/wp/wp-content/uploads/2025/04/1.jpg',
+    'https://brindideias.com.br/wp/wp-content/uploads/2025/04/2.jpg',
+    'https://brindideias.com.br/wp/wp-content/uploads/2025/04/3.jpg',
+    'https://brindideias.com.br/wp/wp-content/uploads/2025/04/4.jpg'
   ]);
   const slideRef = React.useRef<HTMLDivElement>(null);
   const { toast } = useToast();
@@ -899,7 +899,7 @@ export default function Home() {
           <Testimonial
             name="Carlos Silva"
             company="Constrular Materiais, São Paulo"
-            image="/cliente1.png"
+            image="https://brindideias.com.br/wp/wp-content/uploads/2025/04/cliente-plus-m.png"
             text="Depois de trabalhar com várias agências de marketing sem resultado, encontramos a Material Plus. Em 6 meses, aumentamos nosso faturamento em 63% e o Instagram passou a gerar vendas reais. A diferença é que eles realmente entendem o mercado de materiais."
             since="Cliente desde: Março/2022"
             result="+63% em vendas"
@@ -908,7 +908,7 @@ export default function Home() {
           <Testimonial
             name="Ana Oliveira"
             company="Eletrotec, Belo Horizonte"
-            image="/cliente2.png"
+            image="https://brindideias.com.br/wp/wp-content/uploads/2025/04/material-plus-cliente.png"
             text="A implementação do sistema de CRM e a automação dos orçamentos transformou nossa operação. Conseguimos atender mais clientes com a mesma equipe e o Google Ads finalmente começou a dar resultado. Nosso ROI triplicou em 4 meses."
             since="Cliente desde: Janeiro/2023"
             result="+215% em leads"
@@ -966,7 +966,7 @@ export default function Home() {
               <div className="flex-shrink-0 w-full snap-center px-1">
                 <div className="carousel-item">
                   <img 
-                    src="/Component 8.png" 
+                    src="/src/assets/Component 8.png" 
                     alt="Case Tigre" 
                     className="w-auto h-auto max-h-[400px] mx-auto object-contain"
                   />
@@ -976,7 +976,7 @@ export default function Home() {
               <div className="flex-shrink-0 w-full snap-center px-1">
                 <div className="carousel-item">
                   <img 
-                    src="/Component 9.png" 
+                    src="/src/assets/Component 9.png" 
                     alt="Case Amanco" 
                     className="w-auto h-auto max-h-[400px] mx-auto object-contain"
                   />
@@ -986,7 +986,7 @@ export default function Home() {
               <div className="flex-shrink-0 w-full snap-center px-1">
                 <div className="carousel-item">
                   <img 
-                    src="/Component 10.png" 
+                    src="/src/assets/Component 10.png" 
                     alt="Case Vedacit" 
                     className="w-auto h-auto max-h-[400px] mx-auto object-contain"
                   />
@@ -995,7 +995,7 @@ export default function Home() {
               
               <div className="flex-shrink-0 w-full snap-center px-1">
                 <img 
-                  src="/Component 11.png" 
+                  src="/src/assets/Component 11.png" 
                   alt="Case Gerdau" 
                   className="w-auto h-auto max-h-[400px] mx-auto object-contain"
                 />
@@ -1003,7 +1003,7 @@ export default function Home() {
               
               <div className="flex-shrink-0 w-full snap-center px-1">
                 <img 
-                  src="/Component 12.png" 
+                  src="/src/assets/Component 12.png" 
                   alt="Case Eternit" 
                   className="w-auto h-auto max-h-[400px] mx-auto object-contain"
                 />
@@ -1011,7 +1011,7 @@ export default function Home() {
               
               <div className="flex-shrink-0 w-full snap-center px-1">
                 <img 
-                  src="/Component 13.png" 
+                  src="/src/assets/Component 13.png" 
                   alt="Case Votorantim" 
                   className="w-auto h-auto max-h-[400px] mx-auto object-contain"
                 />
