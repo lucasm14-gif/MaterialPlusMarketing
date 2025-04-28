@@ -1051,120 +1051,90 @@ export default function Home() {
                 Vamos conversar sobre como vender mais na sua loja?
               </h2>
               <p className="text-white opacity-90 mb-6 text-lg">
-                Preencha o formulário ao lado para uma consultoria gratuita e descubra como podemos transformar o marketing digital da sua loja de materiais.
+                Fale diretamente com um de nossos especialistas e descubra como podemos transformar o marketing digital da sua loja de materiais.
               </p>
-              <div className="space-y-4">
+              <div className="space-y-4 mb-8">
                 <FeatureItem text="Atendimento exclusivo para lojistas de materiais" />
                 <FeatureItem text="Planos personalizados de acordo com seu orçamento" />
                 <FeatureItem text="Resultados mensuráveis com foco em vendas reais" />
                 <FeatureItem text="Equipe especializada no mercado de materiais" />
               </div>
+              
+              <motion.a 
+                href="https://wa.me/555191088005?text=Olá!%20Gostaria%20de%20saber%20como%20vocês%20podem%20me%20ajudar%20a%20vender%20mais%20na%20minha%20loja."
+                className="inline-flex items-center px-8 py-4 bg-[#F7CB15] hover:bg-[#e8bc0c] text-[#0C0910] font-bold rounded-lg shadow-xl text-lg border-b-4 border-[#d9ae08]"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className="h-6 w-6 mr-3" 
+                  viewBox="0 0 24 24" 
+                  fill="currentColor"
+                >
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                </svg>
+                FALAR COM UM ESPECIALISTA AGORA
+              </motion.a>
             </div>
             
-            <div className="md:w-5/12 bg-white p-8 rounded-lg shadow-lg">
-              <h3 className="font-sora font-bold text-xl text-primary mb-4">
-                Solicite uma análise gratuita
-              </h3>
-              
-              <Form {...contactForm}>
-                <form onSubmit={contactForm.handleSubmit(onContactFormSubmit)} className="space-y-4">
-                  <FormField
-                    control={contactForm.control}
-                    name="name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-sm font-medium text-[#0C0910]">Nome completo</FormLabel>
-                        <FormControl>
-                          <Input {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
+            <div className="md:w-5/12 bg-white p-8 rounded-xl shadow-xl overflow-hidden">
+              <div className="text-center">
+                <div className="relative mb-8">
+                  <img 
+                    src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" 
+                    alt="Equipe especializada"
+                    className="w-full h-48 object-cover rounded-lg"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = 'none';
+                    }}
                   />
-                  
-                  <FormField
-                    control={contactForm.control}
-                    name="whatsapp"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-sm font-medium text-[#0C0910]">WhatsApp</FormLabel>
-                        <FormControl>
-                          <Input {...field} type="tel" />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-5">
+                    <p className="text-white font-semibold text-lg">Equipe especializada em marketing para lojas de materiais</p>
+                  </div>
+                </div>
+                
+                <h3 className="font-sora font-bold text-xl text-[#0C0910] mb-4">
+                  Aponte a câmera para o QR Code
+                </h3>
+                
+                <div className="bg-white p-3 rounded-lg w-48 h-48 mx-auto mb-4 border">
+                  <img 
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://wa.me/555191088005?text=Ola%20Material%20Plus!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servicos%20de%20marketing%20para%20minha%20loja." 
+                    alt="QR Code WhatsApp"
+                    className="w-full h-full"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = 'none';
+                      (e.target as HTMLImageElement).parentElement!.innerHTML = '<div class="flex items-center justify-center h-full bg-gray-100 rounded-lg"><p class="text-sm text-gray-500">Escaneie para conversar</p></div>';
+                    }}
                   />
-                  
-                  <FormField
-                    control={contactForm.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-sm font-medium text-[#0C0910]">E-mail</FormLabel>
-                        <FormControl>
-                          <Input {...field} type="email" />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={contactForm.control}
-                    name="storeName"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-sm font-medium text-[#0C0910]">Nome da loja</FormLabel>
-                        <FormControl>
-                          <Input {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={contactForm.control}
-                    name="city"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-sm font-medium text-[#0C0910]">Cidade</FormLabel>
-                        <FormControl>
-                          <Input {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={contactForm.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-sm font-medium text-[#0C0910]">O que você espera do marketing digital?</FormLabel>
-                        <FormControl>
-                          <Textarea {...field} rows={3} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <Button 
-                    type="submit" 
-                    variant="accent"
-                    className="w-full shadow-md font-semibold py-3 text-black"
-                    disabled={submitLeadMutation.isPending}
+                </div>
+                
+                <p className="text-gray-500 text-sm mb-6">
+                  Ou clique no botão abaixo para iniciar uma conversa
+                </p>
+                
+                <motion.a 
+                  href="https://wa.me/555191088005?text=Olá!%20Gostaria%20de%20saber%20como%20vocês%20podem%20me%20ajudar%20a%20vender%20mais%20na%20minha%20loja."
+                  className="inline-flex items-center justify-center w-full py-3 px-4 bg-green-500 hover:bg-green-600 text-white font-bold rounded-lg shadow-md"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    className="h-5 w-5 mr-2" 
+                    viewBox="0 0 24 24" 
+                    fill="currentColor"
                   >
-                    {submitLeadMutation.isPending ? "ENVIANDO..." : "SOLICITAR ANÁLISE GRATUITA"}
-                  </Button>
-                  <p className="text-xs text-center text-gray-500 mt-2">
-                    Ao enviar, você concorda em receber contato da nossa equipe
-                  </p>
-                </form>
-              </Form>
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                  </svg>
+                  Conversar no WhatsApp
+                </motion.a>
+              </div>
             </div>
           </div>
         </div>
