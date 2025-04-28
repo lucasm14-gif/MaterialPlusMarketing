@@ -190,7 +190,7 @@ interface TestimonialProps {
 
 const Testimonial = ({ name, company, image, text, since, result }: TestimonialProps) => (
   <motion.div 
-    className="bg-white p-6 rounded-lg shadow-md cursor-pointer"
+    className="bg-white p-4 sm:p-6 rounded-lg shadow-md cursor-pointer"
     whileHover={{ 
       scale: 1.02,
       boxShadow: "0 10px 30px rgba(0, 0, 0, 0.08)",
@@ -198,9 +198,9 @@ const Testimonial = ({ name, company, image, text, since, result }: TestimonialP
     }}
     transition={{ type: "spring", stiffness: 300, damping: 25 }}
   >
-    <div className="flex items-center mb-4">
+    <div className="flex flex-col sm:flex-row sm:items-center mb-4">
       <motion.div 
-        className="w-16 h-16 rounded-full overflow-hidden mr-4 border-2 border-primary/10"
+        className="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden mx-auto sm:mx-0 sm:mr-4 border-2 border-primary/10 mb-3 sm:mb-0"
         whileHover={{ scale: 1.1 }}
         transition={{ type: "spring", stiffness: 300 }}
       >
@@ -221,13 +221,13 @@ const Testimonial = ({ name, company, image, text, since, result }: TestimonialP
           </div>
         )}
       </motion.div>
-      <div>
+      <div className="text-center sm:text-left">
         <h4 className="font-montserrat font-bold text-lg">{name}</h4>
         <p className="text-gray-600">{company}</p>
       </div>
     </div>
     <motion.div 
-      className="flex mb-4"
+      className="flex justify-center sm:justify-start mb-4"
       whileHover={{ 
         x: 5,
         transition: { staggerChildren: 0.1, delayChildren: 0.05 }
@@ -536,7 +536,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-24 pb-20 md:pt-28 md:pb-24 bg-gradient-to-br from-[#0a2463] via-[#1E65DE] to-[#4989F5] text-white">
+      <section className="relative pt-20 pb-16 md:pt-28 md:pb-24 bg-gradient-to-br from-[#0a2463] via-[#1E65DE] to-[#4989F5] text-white">
         {/* Padrão de fundo */}
         <div className="absolute inset-0 overflow-hidden opacity-10">
           <div className="absolute top-0 left-0 w-full h-full">
@@ -556,13 +556,13 @@ export default function Home() {
           </div>
         </div>
         
-        <div className="container relative z-10">
-          <div className="flex flex-col md:flex-row items-center gap-12">
-            <div className="md:w-1/2 md:pr-6 mb-8 md:mb-0">
-              <div className="inline-block bg-white py-1 px-3 rounded-full text-primary font-semibold text-sm mb-6" role="text" aria-label="Slogan">
+        <div className="container relative z-10 px-4 mx-auto">
+          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+            <div className="md:w-1/2 md:pr-6 mb-8 md:mb-0 text-center md:text-left">
+              <div className="inline-block bg-white py-1 px-3 rounded-full text-primary font-semibold text-xs sm:text-sm mb-4 md:mb-6" role="text" aria-label="Slogan">
                 MARKETING QUE VENDE, PRA QUEM VENDE MATERIAL
               </div>
-              <h1 className="font-sora font-extrabold text-3xl md:text-4xl lg:text-5xl leading-tight mb-4" itemProp="headline">
+              <h1 className="font-sora font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight mb-4" itemProp="headline">
                 <span className="text-[#F7CB15]">Transforme</span> sua loja de materiais em um{" "}
                 <span className="bg-gradient-to-r from-[#F7CB15] to-[#F7CB15] bg-no-repeat bg-bottom bg-[length:100%_8px]">
                   ímã de clientes
@@ -700,14 +700,14 @@ export default function Home() {
 
       {/* Team Section */}
       <section className="py-16 bg-white">
-        <div className="container">
+        <div className="container px-4 mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="md:w-2/5 mb-10 md:mb-0">
-              <h2 className="font-sora font-bold text-3xl md:text-4xl text-[#0C0910] mb-4">
-                Um desses<br />especialistas vai<br />atender você
+            <div className="md:w-2/5 mb-10 md:mb-0 text-center md:text-left">
+              <h2 className="font-sora font-bold text-2xl sm:text-3xl md:text-4xl text-[#0C0910] mb-4">
+                Um desses<br />especialistas vai<br className="hidden sm:block" />atender você
               </h2>
-              <div className="w-24 h-1 bg-primary mb-6"></div>
-              <p className="text-gray-700 mb-8">
+              <div className="w-24 h-1 bg-primary mb-6 mx-auto md:mx-0"></div>
+              <p className="text-gray-700 mb-8 max-w-md mx-auto md:mx-0">
                 Nossa equipe é especializada no mercado de materiais de construção 
                 e entende os desafios específicos do seu negócio. Conte com profissionais 
                 que falam a linguagem do seu cliente e conhecem o seu setor.
@@ -716,20 +716,20 @@ export default function Home() {
                 variant="accent" 
                 size="lg"
                 onClick={() => scrollToSection("contato")}
-                className="shadow-lg text-[#0C0910] bg-[#F7CB15] hover:bg-[#e8bc0c] font-bold border-b-4 border-[#d9ae08] px-8"
+                className="shadow-lg text-[#0C0910] bg-[#F7CB15] hover:bg-[#e8bc0c] font-bold border-b-4 border-[#d9ae08] px-6 sm:px-8"
               >
                 Quero receber atendimento
               </Button>
             </div>
             
-            <div className="md:w-1/2 relative">
+            <div className="md:w-1/2 relative mt-6 md:mt-0">
               <div className="flex justify-center items-center">
                 {teamMembers.map((url, index) => (
                   <div 
                     key={index}
-                    className={`w-24 h-24 md:w-36 md:h-36 rounded-full ${
-                      index !== teamMembers.length - 1 ? '-mr-6 md:-mr-10' : ''
-                    } relative z-${index + 1}0 border-4 border-white overflow-hidden shadow-lg transition-transform hover:scale-105 duration-300`}
+                    className={`w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 lg:w-36 lg:h-36 rounded-full ${
+                      index !== teamMembers.length - 1 ? '-mr-4 sm:-mr-5 md:-mr-8 lg:-mr-10' : ''
+                    } relative z-${index + 1}0 border-2 sm:border-4 border-white overflow-hidden shadow-lg transition-transform hover:scale-105 duration-300`}
                   >
                     <img 
                       src={url} 
