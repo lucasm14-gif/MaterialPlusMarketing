@@ -594,43 +594,47 @@ export default function Home() {
               </Button>
             </div>
             
-            <div className="md:w-1/2 bg-white p-8 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.2)] text-black">
-              <div className="text-center mb-6">
-                <div className="inline-block p-4 bg-green-500/10 rounded-full mb-4">
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    className="h-12 w-12 text-green-500" 
-                    viewBox="0 0 24 24" 
-                    fill="currentColor"
-                  >
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
-                  </svg>
-                </div>
-                <h3 className="font-sora font-bold text-2xl text-[#0C0910] mb-3">
-                  Fale com um especialista <span className="text-primary">agora mesmo</span>
-                </h3>
-                <p className="text-gray-600 mb-5">
-                  Nossos consultores estão prontos para te atender e fazer sua loja vender mais!
-                </p>
-              </div>
-              
-              <div className="space-y-5">
-                <div className="bg-green-50 border border-green-100 rounded-lg p-5">
-                  <div className="flex items-start">
-                    <div className="h-10 w-10 rounded-full bg-green-500 flex items-center justify-center mr-4 flex-shrink-0">
-                      <Check className="h-5 w-5 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-gray-800 mb-1">Atendimento exclusivo</h4>
-                      <p className="text-sm text-gray-600">Temos uma equipe focada em lojas de materiais de construção</p>
+            <div className="md:w-1/2 bg-white p-0 rounded-xl shadow-[0_32px_64px_rgba(0,0,0,0.15)] text-black overflow-hidden">
+              <div className="bg-gradient-to-br from-green-500 to-green-600 py-6 px-8 text-white">
+                <div className="flex items-center">
+                  <div className="flex-shrink-0 mr-5">
+                    <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                      <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        className="h-8 w-8 text-white" 
+                        viewBox="0 0 24 24" 
+                        fill="currentColor"
+                      >
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                      </svg>
                     </div>
                   </div>
+                  <div>
+                    <h3 className="font-sora font-bold text-2xl mb-1">
+                      Fale com um especialista
+                    </h3>
+                    <p className="opacity-90 text-sm">
+                      Consultoria gratuita e exclusiva para sua loja
+                    </p>
+                  </div>
                 </div>
-                
-                <div className="bg-green-50 border border-green-100 rounded-lg p-5">
-                  <div className="flex items-start">
-                    <div className="h-10 w-10 rounded-full bg-green-500 flex items-center justify-center mr-4 flex-shrink-0">
-                      <Clock className="h-5 w-5 text-white" />
+              </div>
+              
+              <div className="p-8">
+                <div className="space-y-5 mb-6">
+                  <div className="flex items-start gap-4 border-b border-gray-100 pb-4">
+                    <div className="flex-shrink-0 h-10 w-10 bg-green-500/10 rounded-full flex items-center justify-center">
+                      <Check className="h-5 w-5 text-green-600" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-800 mb-1">Atendimento especializado</h4>
+                      <p className="text-sm text-gray-600">Nossa equipe entende profundamente o mercado de materiais de construção</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4 border-b border-gray-100 pb-4">
+                    <div className="flex-shrink-0 h-10 w-10 bg-green-500/10 rounded-full flex items-center justify-center">
+                      <Clock className="h-5 w-5 text-green-600" />
                     </div>
                     <div>
                       <h4 className="font-bold text-gray-800 mb-1">Resposta em até 10 minutos</h4>
@@ -639,30 +643,34 @@ export default function Home() {
                   </div>
                 </div>
                 
-                <motion.a 
-                  href="https://wa.me/555191088005?text=Olá!%20Gostaria%20de%20saber%20como%20vocês%20podem%20aumentar%20as%20vendas%20da%20minha%20loja."
-                  className="block w-full py-4 px-6 bg-green-500 hover:bg-green-600 text-white text-center font-bold rounded-lg shadow-lg transition-all duration-300"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.98 }}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div className="flex items-center justify-center">
+                <div className="flex flex-col gap-4">
+                  <motion.a 
+                    href="https://wa.me/555191088005?text=Olá!%20Gostaria%20de%20saber%20como%20vocês%20podem%20aumentar%20as%20vendas%20da%20minha%20loja."
+                    className="group flex items-center justify-center w-full py-4 px-6 bg-[#25D366] hover:bg-[#22c55e] text-white font-bold rounded-xl shadow-lg transition-all duration-300 relative overflow-hidden"
+                    whileHover={{ 
+                      scale: 1.03,
+                      boxShadow: "0 10px 25px -5px rgba(37, 211, 102, 0.5)" 
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="absolute w-0 h-0 transition-all duration-300 rounded-full bg-white opacity-10 group-hover:w-72 group-hover:h-72 -top-10 -left-10"></span>
                     <svg 
                       xmlns="http://www.w3.org/2000/svg" 
-                      className="h-6 w-6 mr-2" 
+                      className="h-6 w-6 mr-3" 
                       viewBox="0 0 24 24" 
                       fill="currentColor"
                     >
                       <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
                     </svg>
                     INICIAR CONVERSA NO WHATSAPP
+                  </motion.a>
+                  
+                  <div className="flex justify-center items-center text-xs text-gray-500">
+                    <Lock className="h-3 w-3 mr-1" />
+                    <span>Comunicação segura e confidencial</span>
                   </div>
-                </motion.a>
-                
-                <div className="flex justify-center items-center text-xs text-gray-500 mt-4">
-                  <Lock className="h-3 w-3 mr-1" />
-                  <span>Comunicação segura e confidencial</span>
                 </div>
               </div>
             </div>
@@ -1080,60 +1088,110 @@ export default function Home() {
               </motion.a>
             </div>
             
-            <div className="md:w-5/12 bg-white p-8 rounded-xl shadow-xl overflow-hidden">
-              <div className="text-center">
-                <div className="relative mb-8">
-                  <img 
-                    src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" 
-                    alt="Equipe especializada"
-                    className="w-full h-48 object-cover rounded-lg"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).style.display = 'none';
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-5">
-                    <p className="text-white font-semibold text-lg">Equipe especializada em marketing para lojas de materiais</p>
+            <div className="md:w-5/12 bg-white p-0 rounded-xl shadow-[0_32px_64px_rgba(0,0,0,0.15)] overflow-hidden">
+              <div className="bg-gradient-to-r from-primary to-blue-500 p-6 text-white">
+                <div className="flex items-center">
+                  <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mr-4">
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      className="h-5 w-5 text-white" 
+                      fill="none"
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <h3 className="font-sora font-bold text-xl">
+                    Escaneie o código ou clique para conversar
+                  </h3>
+                </div>
+              </div>
+
+              <div className="px-8 pt-8 pb-6">
+                <div className="flex flex-col md:flex-row gap-6 items-center">
+                  <div className="relative">
+                    <div className="bg-blue-50 p-4 rounded-xl relative shadow-[0_8px_30px_rgb(0,0,0,0.05)] border border-blue-100">
+                      <div className="absolute -top-2 -right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center border-2 border-white">
+                        <svg 
+                          xmlns="http://www.w3.org/2000/svg" 
+                          className="h-4 w-4 text-white" 
+                          viewBox="0 0 24 24" 
+                          fill="currentColor"
+                        >
+                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                        </svg>
+                      </div>
+                      <img 
+                        src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://wa.me/555191088005?text=Ola%20Material%20Plus!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servicos%20de%20marketing%20para%20minha%20loja." 
+                        alt="QR Code WhatsApp"
+                        className="w-40 h-40"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).style.display = 'none';
+                          (e.target as HTMLImageElement).parentElement!.innerHTML = '<div class="flex items-center justify-center h-40 bg-gray-50 rounded-lg"><p class="text-sm text-gray-500">Escaneie para conversar</p></div>';
+                        }}
+                      />
+                    </div>
+                    <div className="absolute -z-10 bg-[#25D366] w-full h-full rounded-xl top-2 left-2 opacity-10"></div>
+                  </div>
+                  
+                  <div className="flex flex-col gap-4 md:w-1/2">
+                    <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                      <div className="flex items-start">
+                        <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center mr-3 flex-shrink-0">
+                          <CheckCircle className="h-4 w-4 text-primary" />
+                        </div>
+                        <div>
+                          <h5 className="text-sm font-bold text-gray-800 mb-1">Análise gratuita</h5>
+                          <p className="text-xs text-gray-600">Da presença digital da sua loja</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                      <div className="flex items-start">
+                        <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center mr-3 flex-shrink-0">
+                          <UserCheck className="h-4 w-4 text-primary" />
+                        </div>
+                        <div>
+                          <h5 className="text-sm font-bold text-gray-800 mb-1">Consultoria especializada</h5>
+                          <p className="text-xs text-gray-600">Em marketing para lojas de materiais</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 
-                <h3 className="font-sora font-bold text-xl text-[#0C0910] mb-4">
-                  Aponte a câmera para o QR Code
-                </h3>
-                
-                <div className="bg-white p-3 rounded-lg w-48 h-48 mx-auto mb-4 border">
-                  <img 
-                    src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://wa.me/555191088005?text=Ola%20Material%20Plus!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servicos%20de%20marketing%20para%20minha%20loja." 
-                    alt="QR Code WhatsApp"
-                    className="w-full h-full"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).style.display = 'none';
-                      (e.target as HTMLImageElement).parentElement!.innerHTML = '<div class="flex items-center justify-center h-full bg-gray-100 rounded-lg"><p class="text-sm text-gray-500">Escaneie para conversar</p></div>';
+                <div className="mt-6 space-y-4">
+                  <motion.a 
+                    href="https://wa.me/555191088005?text=Olá!%20Gostaria%20de%20saber%20como%20vocês%20podem%20me%20ajudar%20a%20vender%20mais%20na%20minha%20loja."
+                    className="group flex items-center justify-center w-full py-4 px-6 bg-[#25D366] hover:bg-[#22c55e] text-white font-bold rounded-xl shadow-lg transition-all duration-300 relative overflow-hidden"
+                    whileHover={{ 
+                      scale: 1.02,
+                      boxShadow: "0 10px 25px -5px rgba(37, 211, 102, 0.5)" 
                     }}
-                  />
-                </div>
-                
-                <p className="text-gray-500 text-sm mb-6">
-                  Ou clique no botão abaixo para iniciar uma conversa
-                </p>
-                
-                <motion.a 
-                  href="https://wa.me/555191088005?text=Olá!%20Gostaria%20de%20saber%20como%20vocês%20podem%20me%20ajudar%20a%20vender%20mais%20na%20minha%20loja."
-                  className="inline-flex items-center justify-center w-full py-3 px-4 bg-green-500 hover:bg-green-600 text-white font-bold rounded-lg shadow-md"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    className="h-5 w-5 mr-2" 
-                    viewBox="0 0 24 24" 
-                    fill="currentColor"
+                    whileTap={{ scale: 0.98 }}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
-                  </svg>
-                  Conversar no WhatsApp
-                </motion.a>
+                    <span className="absolute w-0 h-0 transition-all duration-300 rounded-full bg-white opacity-10 group-hover:w-72 group-hover:h-72 -top-10 -left-10"></span>
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      className="h-6 w-6 mr-3" 
+                      viewBox="0 0 24 24" 
+                      fill="currentColor"
+                    >
+                      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                    </svg>
+                    FALAR COM UM ESPECIALISTA
+                  </motion.a>
+                  
+                  <div className="flex justify-center items-center text-xs text-gray-500">
+                    <Lock className="h-3 w-3 mr-1" />
+                    <span>Atendimento rápido e confidencial</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
