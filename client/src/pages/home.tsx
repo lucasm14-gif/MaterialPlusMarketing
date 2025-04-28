@@ -873,8 +873,8 @@ export default function Home() {
             </div>
             <div className="md:w-1/3">
               <img 
-                src="https://brindideias.com.br/wp/wp-content/uploads/2025/04/cliente-plus-m.png"
-                alt="Cliente Plus"
+                src="https://sollussc.com.br/wp-content/uploads/2018/01/Hidraulica-Principal.jpg"
+                alt="Material Hidráulico"
                 className="w-full h-48 md:h-64 object-cover rounded-lg shadow-md"
               />
             </div>
@@ -1270,7 +1270,7 @@ export default function Home() {
                 <a href="#" className="text-gray-300 hover:text-white transition">
                   <Facebook className="h-5 w-5" />
                 </a>
-                <a href="#" className="text-gray-300 hover:text-white transition">
+                <a href="https://www.instagram.com/materialplusbr/" className="text-gray-300 hover:text-white transition" target="_blank" rel="noopener noreferrer">
                   <Instagram className="h-5 w-5" />
                 </a>
                 <a href="#" className="text-gray-300 hover:text-white transition">
