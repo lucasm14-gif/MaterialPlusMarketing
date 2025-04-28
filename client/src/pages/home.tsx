@@ -857,7 +857,11 @@ export default function Home() {
               </Button>
             </div>
             <div className="md:w-1/3">
-              <div className="bg-gray-300 rounded-lg shadow-md w-full h-48 md:h-64"></div>
+              <img 
+                src="https://brindideias.com.br/wp/wp-content/uploads/2025/04/cliente-plus-m.png"
+                alt="Cliente Plus"
+                className="w-full h-48 md:h-64 object-cover rounded-lg shadow-md"
+              />
             </div>
           </div>
         </div>
