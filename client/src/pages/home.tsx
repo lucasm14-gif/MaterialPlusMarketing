@@ -544,69 +544,54 @@ export default function Home() {
         <div className="container relative z-10">
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-1/2 md:pr-6 mb-8 md:mb-0">
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm py-2 px-4 rounded-full text-[#F7CB15] font-semibold text-sm mb-6 border border-white/10" role="text" aria-label="Slogan">
-                <span className="inline-block w-2 h-2 rounded-full bg-[#F7CB15]"></span>
+              <div className="inline-block bg-white py-1 px-3 rounded-full text-primary font-semibold text-sm mb-6" role="text" aria-label="Slogan">
                 MARKETING QUE VENDE, PRA QUEM VENDE MATERIAL
               </div>
-              
               <h1 className="font-sora font-extrabold text-3xl md:text-4xl lg:text-5xl leading-tight mb-4" itemProp="headline">
-                <div className="flex flex-col">
-                  <span className="text-white mb-1">Transforme sua loja em um</span>
-                  <span className="relative">
-                    <span className="bg-gradient-to-r from-[#F7CB15] to-[#F7CB15] px-1 text-[#0C0910]">
-                      ímã de clientes
-                    </span>
-                    <div className="absolute -bottom-1 left-0 w-full h-1 bg-[#F7CB15]/50 rounded-full"></div>
-                  </span>
-                </div>
+                <span className="text-[#F7CB15]">Transforme</span> sua loja de materiais em um{" "}
+                <span className="bg-gradient-to-r from-[#F7CB15] to-[#F7CB15] bg-no-repeat bg-bottom bg-[length:100%_8px]">
+                  ímã de clientes
+                </span>
               </h1>
-              
-              <h2 className="font-inter text-xl md:text-2xl text-white/90 mb-8">
-                Marketing digital <span className="text-[#F7CB15] font-semibold">especializado para lojas de materiais</span> de construção, elétricos e hidráulicos que <span className="text-white font-bold">realmente traz resultados</span>
+              <h2 className="font-inter text-xl md:text-2xl text-white/90 mb-6">
+                Marketing digital especializado para lojas de materiais de construção, elétricos e hidráulicos que <span className="font-bold">realmente traz resultados</span>
               </h2>
               
-              <div className="grid grid-cols-2 gap-x-8 gap-y-6 mb-8">
-                <div className="flex items-center bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 transition-all duration-300 hover:bg-white/10 hover:border-white/20">
-                  <div className="mr-3 w-10 h-10 bg-[#F7CB15] rounded-full flex items-center justify-center shadow-lg">
-                    <TrendingUp className="h-5 w-5 text-[#0C0910]" />
+              <div className="grid grid-cols-2 gap-6 mb-8">
+                <div className="flex items-center">
+                  <div className="mr-3 w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
+                    <TrendingUp className="h-5 w-5 text-[#F7CB15]" />
                   </div>
-                  <span className="font-medium">Vendas em <span className="text-[#F7CB15] font-bold">+147%</span></span>
+                  <span>Aumente suas vendas em +147%</span>
                 </div>
-                
-                <div className="flex items-center bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 transition-all duration-300 hover:bg-white/10 hover:border-white/20">
-                  <div className="mr-3 w-10 h-10 bg-[#F7CB15] rounded-full flex items-center justify-center shadow-lg">
-                    <Target className="h-5 w-5 text-[#0C0910]" />
+                <div className="flex items-center">
+                  <div className="mr-3 w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
+                    <Target className="h-5 w-5 text-[#F7CB15]" />
                   </div>
-                  <span className="font-medium">Clientes qualificados</span>
+                  <span>Clientes qualificados</span>
                 </div>
-                
-                <div className="flex items-center bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 transition-all duration-300 hover:bg-white/10 hover:border-white/20">
-                  <div className="mr-3 w-10 h-10 bg-[#F7CB15] rounded-full flex items-center justify-center shadow-lg">
-                    <Users className="h-5 w-5 text-[#0C0910]" />
+                <div className="flex items-center">
+                  <div className="mr-3 w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
+                    <Users className="h-5 w-5 text-[#F7CB15]" />
                   </div>
-                  <span className="font-medium">Especialistas no seu mercado</span>
+                  <span>Especialistas no seu mercado</span>
                 </div>
-                
-                <div className="flex items-center bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 transition-all duration-300 hover:bg-white/10 hover:border-white/20">
-                  <div className="mr-3 w-10 h-10 bg-[#F7CB15] rounded-full flex items-center justify-center shadow-lg">
-                    <BarChart2 className="h-5 w-5 text-[#0C0910]" />
+                <div className="flex items-center">
+                  <div className="mr-3 w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
+                    <BarChart2 className="h-5 w-5 text-[#F7CB15]" />
                   </div>
-                  <span className="font-medium">Resultados garantidos</span>
+                  <span>Resultados garantidos</span>
                 </div>
               </div>
               
-              <motion.button 
+              <Button 
+                variant="accent" 
+                size="lg"
                 onClick={() => scrollToSection("contato")}
-                className="group relative overflow-hidden rounded-xl py-4 px-8 shadow-lg font-bold text-[#0C0910] bg-[#F7CB15] transition-all duration-300 border-b-4 border-[#d9ae08]"
-                whileHover={{ 
-                  scale: 1.03,
-                  boxShadow: "0 10px 25px -5px rgba(247, 203, 21, 0.5)" 
-                }}
-                whileTap={{ scale: 0.98 }}
+                className="shadow-lg mb-2 md:mb-0 text-[#0C0910] bg-[#F7CB15] hover:bg-[#e8bc0c] font-bold border-b-4 border-[#d9ae08]"
               >
-                <span className="absolute w-0 h-0 transition-all duration-300 rounded-full bg-white opacity-10 group-hover:w-72 group-hover:h-72 -top-10 -left-10"></span>
-                <span className="relative z-10 text-lg">QUERO AUMENTAR MINHAS VENDAS</span>
-              </motion.button>
+                Quero aumentar minhas vendas agora!
+              </Button>
             </div>
             
             <div className="md:w-1/2 bg-white p-0 rounded-xl shadow-[0_32px_64px_rgba(0,0,0,0.15)] text-black overflow-hidden">
