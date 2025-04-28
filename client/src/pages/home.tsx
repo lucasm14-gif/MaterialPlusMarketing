@@ -595,81 +595,86 @@ export default function Home() {
             </div>
             
             <div className="md:w-1/2 bg-white p-0 rounded-xl shadow-[0_32px_64px_rgba(0,0,0,0.15)] text-black overflow-hidden">
-              <div className="bg-gradient-to-br from-green-500 to-green-600 py-6 px-8 text-white">
-                <div className="flex items-center">
-                  <div className="flex-shrink-0 mr-5">
-                    <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+              <div className="bg-gradient-to-r from-primary via-blue-600 to-primary px-10 py-8 text-white">
+                <div className="flex items-center justify-center mb-4">
+                  <div className="w-16 h-16 flex-shrink-0 bg-white/20 backdrop-blur-lg rounded-full flex items-center justify-center">
+                    <svg 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      className="h-8 w-8 text-white"
+                    >
+                      <path d="M21 11.5C21.0034 12.8199 20.6951 14.1219 20.1 15.3C19.3944 16.7118 18.3098 17.8992 16.9674 18.7293C15.6251 19.5594 14.0782 19.9994 12.5 20C11.1801 20.0035 9.87812 19.6951 8.7 19.1L3 21L4.9 15.3C4.30493 14.1219 3.99656 12.8199 4 11.5C4.00061 9.92179 4.44061 8.37488 5.27072 7.03258C6.10083 5.69028 7.28825 4.6056 8.7 3.90003C9.87812 3.30496 11.1801 2.99659 12.5 3.00003H13C15.0843 3.11502 17.053 3.99479 18.5291 5.47089C20.0052 6.94699 20.885 8.91568 21 11V11.5Z" 
+                        stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M12 12V12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M8 12V12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M16 12V12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                </div>
+                <h3 className="font-sora font-bold text-2xl text-center mb-2">
+                  Consultoria <span className="text-[#F7CB15]">gratuita</span> para sua loja
+                </h3>
+                <p className="text-white/80 text-center text-sm mb-0">
+                  Fale com nossos especialistas via WhatsApp
+                </p>
+              </div>
+              
+              <div className="px-8 pt-8 pb-6">
+                <div className="flex flex-col gap-5">
+                  <div className="relative overflow-hidden flex items-center gap-4 bg-gradient-to-r from-blue-50 to-white p-4 rounded-xl border border-blue-100">
+                    <div className="absolute top-0 left-0 w-2 h-full bg-primary"></div>
+                    <div className="flex-shrink-0 h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center">
+                      <CheckCircle className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-800 mb-1">Análise da sua presença digital</h4>
+                      <p className="text-sm text-gray-600">Avaliação do seu site e redes sociais por especialistas</p>
+                    </div>
+                  </div>
+                  
+                  <div className="relative overflow-hidden flex items-center gap-4 bg-gradient-to-r from-blue-50 to-white p-4 rounded-xl border border-blue-100">
+                    <div className="absolute top-0 left-0 w-2 h-full bg-primary"></div>
+                    <div className="flex-shrink-0 h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center">
+                      <Target className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-800 mb-1">Estratégia personalizada</h4>
+                      <p className="text-sm text-gray-600">Plano sob medida para aumentar suas vendas</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mt-7 space-y-4">
+                  <div className="relative">
+                    <motion.a 
+                      href="https://wa.me/555191088005?text=Olá!%20Gostaria%20de%20receber%20uma%20análise%20gratuita%20da%20presença%20digital%20da%20minha%20loja."
+                      className="group flex items-center justify-center w-full py-4 px-6 bg-[#F7CB15] hover:bg-[#e8bc0c] text-[#0C0910] font-bold rounded-xl shadow-lg transition-all duration-300 relative overflow-hidden"
+                      whileHover={{ 
+                        scale: 1.03,
+                        boxShadow: "0 10px 25px -5px rgba(247, 203, 21, 0.5)" 
+                      }}
+                      whileTap={{ scale: 0.98 }}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span className="absolute w-0 h-0 transition-all duration-300 rounded-full bg-white opacity-10 group-hover:w-72 group-hover:h-72 -top-10 -left-10"></span>
                       <svg 
                         xmlns="http://www.w3.org/2000/svg" 
-                        className="h-8 w-8 text-white" 
+                        className="h-6 w-6 mr-3" 
                         viewBox="0 0 24 24" 
                         fill="currentColor"
                       >
                         <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
                       </svg>
-                    </div>
+                      RECEBER ANÁLISE GRATUITA
+                    </motion.a>
+                    <div className="absolute -z-10 -bottom-4 left-1/2 transform -translate-x-1/2 w-3/4 h-4 bg-[#F7CB15]/30 blur-xl"></div>
                   </div>
-                  <div>
-                    <h3 className="font-sora font-bold text-2xl mb-1">
-                      Fale com um especialista
-                    </h3>
-                    <p className="opacity-90 text-sm">
-                      Consultoria gratuita e exclusiva para sua loja
-                    </p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="p-8">
-                <div className="space-y-5 mb-6">
-                  <div className="flex items-start gap-4 border-b border-gray-100 pb-4">
-                    <div className="flex-shrink-0 h-10 w-10 bg-green-500/10 rounded-full flex items-center justify-center">
-                      <Check className="h-5 w-5 text-green-600" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-gray-800 mb-1">Atendimento especializado</h4>
-                      <p className="text-sm text-gray-600">Nossa equipe entende profundamente o mercado de materiais de construção</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-4 border-b border-gray-100 pb-4">
-                    <div className="flex-shrink-0 h-10 w-10 bg-green-500/10 rounded-full flex items-center justify-center">
-                      <Clock className="h-5 w-5 text-green-600" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-gray-800 mb-1">Resposta em até 10 minutos</h4>
-                      <p className="text-sm text-gray-600">Nosso tempo médio de resposta no horário comercial</p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="flex flex-col gap-4">
-                  <motion.a 
-                    href="https://wa.me/555191088005?text=Olá!%20Gostaria%20de%20saber%20como%20vocês%20podem%20aumentar%20as%20vendas%20da%20minha%20loja."
-                    className="group flex items-center justify-center w-full py-4 px-6 bg-[#25D366] hover:bg-[#22c55e] text-white font-bold rounded-xl shadow-lg transition-all duration-300 relative overflow-hidden"
-                    whileHover={{ 
-                      scale: 1.03,
-                      boxShadow: "0 10px 25px -5px rgba(37, 211, 102, 0.5)" 
-                    }}
-                    whileTap={{ scale: 0.98 }}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span className="absolute w-0 h-0 transition-all duration-300 rounded-full bg-white opacity-10 group-hover:w-72 group-hover:h-72 -top-10 -left-10"></span>
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      className="h-6 w-6 mr-3" 
-                      viewBox="0 0 24 24" 
-                      fill="currentColor"
-                    >
-                      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
-                    </svg>
-                    INICIAR CONVERSA NO WHATSAPP
-                  </motion.a>
                   
                   <div className="flex justify-center items-center text-xs text-gray-500">
-                    <Lock className="h-3 w-3 mr-1" />
-                    <span>Comunicação segura e confidencial</span>
+                    <Clock className="h-3 w-3 mr-1" />
+                    <span>Resposta em até 10 minutos no horário comercial</span>
                   </div>
                 </div>
               </div>
